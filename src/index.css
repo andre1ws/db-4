@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --color-page: #f3f3f4;
+  --color-ink: #111111;
+  --color-muted: #8a8a93;
+  --color-body: #52525b;
+  --color-line: #ececee;
+  --color-line-strong: #e4e4e7;
+  --color-line-focus: #d4d4d8;
+  --color-placeholder: #b0b0b7;
+  --color-hover: #fafafa;
+  --color-hover-strong: #f4f4f5;
+  --color-chip: #f3f3f4;
+  --color-blush: #f6ebe7;
+  --color-blush-deep: #f3e4de;
+  --color-blush-ink: #6b5e59;
+  --color-input: #fcfcfc;
+
+  /* Brand purple — primary accent for CTAs, active/selected states and links */
+  --color-brand: #7047cc;
+  --color-brand-soft: #f3eefe;
+  --color-brand-tint: #efe8ff;
+
+  --color-private: #ece4fb;
+  --color-private-dot: #8b5cf6;
+  --color-public: #dcfce7;
+  --color-public-dot: #22c55e;
+  --color-workflow: #3b82f6;
+  --color-agent: #8b5cf6;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-page);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input {
+  font-family: inherit;
+}
