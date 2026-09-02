@@ -48,11 +48,23 @@ function UserAvatar({ user }: { user: User }) {
   )
 }
 
-function UserRow({ user }: { user: User }) {
+function UserRow({ user, onOpen }: { user: User; onOpen: (user: User) => void }) {
   const Device = user.device === 'desktop' ? Laptop : Smartphone
 
   return (
-    <tr className="border-b border-line last:border-b-0 hover:bg-hover">
+    <tr
+      className="cursor-pointer border-b border-line last:border-b-0 hover:bg-hover"
+      onClick={() => onOpen(user)}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault()
+          onOpen(user)
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      aria-label={`Open profile for ${user.name}`}
+    >
       <td className="py-2 pl-3 pr-4">
         <div className="flex min-w-[220px] items-center gap-2.5">
           <UserAvatar user={user} />
@@ -158,14 +170,6 @@ export default function UsersPage() {
     return () => observer.disconnect()
   }, [hasMore, filtered.length])
 
-  if (selected) {
-    return (
-      <main className="pl-2 pr-4 py-4">
-        <UserCard user={selected} onBack={() => setSelected(null)} onSelect={setSelected} />
-      </main>
-    )
-  }
-
   return (
     <main className="pl-2 pr-4 py-4">
       <section className="rounded-2xl bg-white p-5 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
@@ -233,7 +237,7 @@ export default function UsersPage() {
             </thead>
             <tbody>
                 {visible.map((user) => (
-                  <UserRow key={user.email} user={user} />
+                  <UserRow key={user.email} user={user} onOpen={setSelected} />
                 ))}
               {visible.length === 0 ? (
                 <tr>
@@ -258,6 +262,8 @@ export default function UsersPage() {
           ) : null}
         </div>
       </section>
+
+      {selected ? <UserCard user={selected} onClose={() => setSelected(null)} /> : null}
     </main>
   )
 }
