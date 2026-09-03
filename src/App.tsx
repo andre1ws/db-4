@@ -27,7 +27,9 @@ import {
 } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { PAGE_SIZE, agents, type Agent, type AgentStatus } from './agents'
+import NotificationsPage from './NotificationsPage'
 import PromotionsPage from './PromotionsPage'
+import type { Notification } from './notifications'
 import type { Promotion } from './promotions'
 import Sidebar, { type NavKey } from './Sidebar'
 import TransactionsPage from './TransactionsPage'
@@ -518,6 +520,7 @@ function hashToNav(hash: string): NavKey {
 export default function App() {
   const [section, setSection] = useState<NavKey>(() => hashToNav(window.location.hash))
   const [promoModal, setPromoModal] = useState<Promotion | 'new' | null>(null)
+  const [notifModal, setNotifModal] = useState<Notification | 'new' | null>(null)
 
   useEffect(() => {
     function syncSection() {
@@ -542,6 +545,8 @@ export default function App() {
       <AgentsPage />
     ) : section === 'payments' ? (
       <TransactionsPage />
+    ) : section === 'notifications' ? (
+      <NotificationsPage modal={notifModal} onModalChange={setNotifModal} />
     ) : (
       <PlaceholderPage />
     )
@@ -554,7 +559,13 @@ export default function App() {
       <div className="min-w-0 flex-1">
         <Header
           breadcrumb={breadcrumb}
-          onCreate={section === 'promotions' ? () => setPromoModal('new') : undefined}
+          onCreate={
+            section === 'promotions'
+              ? () => setPromoModal('new')
+              : section === 'notifications'
+                ? () => setNotifModal('new')
+                : undefined
+          }
         />
         <div className="pt-1">{page}</div>
       </div>

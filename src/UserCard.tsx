@@ -49,8 +49,8 @@ function Field({
 }) {
   const isEmpty = !value
   return (
-    <div>
-      <div className="text-[12.5px] text-muted">{label}</div>
+    <div className="rounded-xl border border-line px-4 py-3">
+      <div className="text-[12px] text-muted">{label}</div>
       <div
         className={`mt-1 flex items-center gap-1.5 text-[13.5px] ${
           isEmpty ? 'text-muted' : 'font-medium text-ink'
@@ -116,39 +116,39 @@ export default function UserCard({
           visible ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="flex items-center justify-between gap-3 border-b border-line px-5 py-3">
-          <div className="flex flex-wrap items-center gap-1 text-[12.5px] font-medium">
+        <div className="flex items-center justify-between gap-3 border-b border-line px-5 py-2.5">
+          <div className="flex flex-wrap items-center gap-2">
             <button
               type="button"
-              className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-body transition hover:bg-hover"
+              className="inline-flex h-9 items-center gap-1.5 rounded-full border border-line-strong bg-white px-3.5 text-[13px] font-semibold text-ink transition hover:bg-hover"
             >
               <RefreshCcw size={14} />
               To company
             </button>
             <button
               type="button"
-              className="inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-3 py-1.5 font-semibold text-brand transition hover:bg-brand hover:text-white"
+              className="inline-flex h-9 items-center gap-1.5 rounded-full border border-line-strong bg-white px-3.5 text-[13px] font-semibold text-ink transition hover:bg-hover"
             >
               <Plus size={14} />
               Add channel
             </button>
             <button
               type="button"
-              className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-body transition hover:bg-hover"
+              className="inline-flex h-9 items-center gap-1.5 rounded-full border border-line-strong bg-white px-3.5 text-[13px] font-semibold text-ink transition hover:bg-hover"
             >
               <Pencil size={14} />
               Edit data
             </button>
             <button
               type="button"
-              className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-body transition hover:bg-hover"
+              className="inline-flex h-9 items-center gap-1.5 rounded-full border border-line-strong bg-white px-3.5 text-[13px] font-semibold text-ink transition hover:bg-hover"
             >
               <Clock3 size={14} />
               History
             </button>
             <button
               type="button"
-              className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-body transition hover:bg-hover"
+              className="inline-flex h-9 items-center gap-1.5 rounded-full border border-line-strong bg-white px-3.5 text-[13px] font-semibold text-ink transition hover:bg-hover"
             >
               <MessageSquare size={14} />
               Chat
@@ -164,9 +164,9 @@ export default function UserCard({
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto px-5 py-4">
-          <div className="flex flex-wrap items-start justify-between gap-4 border-b border-line pb-4">
-            <div className="flex items-center gap-3">
+        <div className="flex-1 overflow-y-auto px-5 pb-4 pt-3.5">
+          <div className="flex flex-wrap items-start justify-between gap-4 border-b border-line pb-3">
+            <div className="flex items-center gap-2.5">
               {user.avatar ? (
                 <img src={user.avatar} alt="" className="h-12 w-12 rounded-xl object-cover" />
               ) : (
@@ -190,7 +190,7 @@ export default function UserCard({
                 ) : null}
               </div>
             </div>
-            <div className="rounded-xl bg-hover px-4 py-2.5 text-right">
+            <div className="rounded-xl bg-hover px-4 py-2 text-right">
               <div className="text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
                 {user.accountLabel || 'Internal account'}
               </div>
@@ -200,7 +200,7 @@ export default function UserCard({
             </div>
           </div>
 
-          <div className="mt-4 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="mt-3 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             <div className="inline-flex items-center gap-0.5 rounded-full bg-chip p-1">
               {tabs.map((item) => (
                 <button
@@ -221,7 +221,7 @@ export default function UserCard({
           </div>
 
           {tab === 'Summary' ? (
-            <div className="mt-5 space-y-5">
+            <div className="mt-4 space-y-4">
               <div>
                 <SectionLabel>Personal info</SectionLabel>
                 <div className="mt-3 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
@@ -236,7 +236,7 @@ export default function UserCard({
                 </div>
               </div>
 
-              <div className="border-t border-line pt-5">
+              <div className="border-t border-line pt-4">
                 <div className="mb-3 flex items-center justify-between gap-3">
                   <SectionLabel>Account details and settings</SectionLabel>
                   {user.twoFactor ? (
@@ -282,8 +282,8 @@ export default function UserCard({
                 </div>
               </div>
 
-              <div className="grid gap-3 border-t border-line pt-5 sm:grid-cols-2">
-                <div className="rounded-xl bg-hover px-4 py-3.5">
+              <div className="grid gap-3 border-t border-line pt-4 sm:grid-cols-2">
+                <div className="rounded-xl border border-line px-4 py-3.5">
                   <div className="mb-1.5 flex items-center justify-between">
                     <h3 className="text-[13.5px] font-semibold">Roles</h3>
                     <button
@@ -298,7 +298,7 @@ export default function UserCard({
                     {user.role || 'No assigned roles'}
                   </div>
                 </div>
-                <div className="rounded-xl bg-hover px-4 py-3.5">
+                <div className="rounded-xl border border-line px-4 py-3.5">
                   <div className="mb-1.5 flex items-center justify-between">
                     <h3 className="text-[13.5px] font-semibold">Fintech</h3>
                     <button
