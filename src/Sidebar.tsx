@@ -78,7 +78,7 @@ function SubNavGroup({
           onClick={() => onNavigate(item.key)}
           className={`flex items-center gap-2 rounded-xl px-2.5 py-1.5 text-left transition ${
             active === item.key
-              ? 'bg-brand/15 font-medium text-white'
+              ? 'bg-white/10 font-medium text-white'
               : 'text-nav-muted hover:bg-nav-hover hover:text-nav-text'
           }`}
         >
@@ -123,7 +123,7 @@ export default function Sidebar({
           Sections
         </div>
 
-        <nav className="mt-2 flex flex-1 flex-col gap-0.5 overflow-y-auto text-[13.5px]">
+        <nav className="nav-scroll mt-2 flex flex-1 flex-col gap-0.5 overflow-y-auto text-[13.5px]">
           <button
             type="button"
             onClick={() => setAdminOpen((open) => !open)}
@@ -262,7 +262,7 @@ function NavItem({
       onClick={onClick}
       className={`flex w-full items-center gap-2.5 rounded-xl px-2.5 py-2 text-left transition ${
         active
-          ? 'bg-brand/15 font-medium text-white'
+          ? 'bg-white/10 font-medium text-white'
           : 'text-nav-muted hover:bg-nav-hover hover:text-nav-text'
       }`}
     >
