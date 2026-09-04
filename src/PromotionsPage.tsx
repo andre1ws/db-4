@@ -60,7 +60,7 @@ export default function PromotionsPage({
           </button>
           <button
             type="button"
-            className="ml-auto inline-flex h-9 items-center gap-2 rounded-full border border-line-strong bg-white px-3.5 text-[13px] font-semibold"
+            className="ml-auto inline-flex h-9 items-center gap-2 rounded-full border border-line-strong bg-white px-3.5 text-[13px] font-medium"
           >
             <Archive size={15} />
             Archive
@@ -78,8 +78,8 @@ export default function PromotionsPage({
               <col className="w-[18%]" />
             </colgroup>
             <thead>
-              <tr className="bg-chip text-[12.5px] font-semibold text-body">
-                <th className="rounded-l-xl px-3 py-2">
+              <tr className="bg-chip text-[12.5px] font-medium text-body">
+                <th className="rounded-l-xl px-3 py-1.5">
                   <div className="flex items-center gap-2">
                     Banner name
                     <span className="rounded-full bg-white/70 px-2 py-0.5 text-[10.5px] text-muted">
@@ -87,11 +87,11 @@ export default function PromotionsPage({
                     </span>
                   </div>
                 </th>
-                <th className="px-2 py-2">Segment</th>
-                <th className="px-2 py-2">Countries</th>
-                <th className="px-2 py-2">Button leads to</th>
-                <th className="px-2 py-2">End date</th>
-                <th className="rounded-r-xl px-3 py-2">Date of last update</th>
+                <th className="px-2 py-1.5">Segment</th>
+                <th className="px-2 py-1.5">Countries</th>
+                <th className="px-2 py-1.5">Button leads to</th>
+                <th className="px-2 py-1.5">End date</th>
+                <th className="rounded-r-xl px-3 py-1.5">Date of last update</th>
               </tr>
             </thead>
             <tbody>
@@ -110,16 +110,16 @@ export default function PromotionsPage({
                   tabIndex={0}
                   aria-label={`Open promotion ${item.name}`}
                 >
-                  <td className="truncate px-3 py-2 text-[13.5px] font-medium">{item.name}</td>
-                  <td className="px-2 py-2">
+                  <td className="truncate px-3 py-1.5 text-[13.5px] font-medium">{item.name}</td>
+                  <td className="px-2 py-1.5">
                     <Pill>{item.segment}</Pill>
                   </td>
-                  <td className="px-2 py-2">
+                  <td className="px-2 py-1.5">
                     <Pill>{item.countries}</Pill>
                   </td>
-                  <td className="px-2 py-2 text-[13px] text-body">{item.leadsTo}</td>
-                  <td className="px-2 py-2 text-[13px] text-muted">{item.endDate || '—'}</td>
-                  <td className="px-3 py-2 text-[13px] text-body">{item.updated}</td>
+                  <td className="px-2 py-1.5 text-[13px] text-body">{item.leadsTo}</td>
+                  <td className="px-2 py-1.5 text-[13px] text-muted">{item.endDate || '—'}</td>
+                  <td className="px-3 py-1.5 text-[13px] text-body">{item.updated}</td>
                 </tr>
               ))}
               {filtered.length === 0 ? (

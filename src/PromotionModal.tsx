@@ -46,7 +46,7 @@ function FieldLabel({
   hint?: boolean
 }) {
   return (
-    <div className="mb-1.5 flex items-center gap-1.5 text-[13px] font-semibold">
+    <div className="mb-1.5 flex items-center gap-1.5 text-[13px] font-medium">
       {children}
       {hint ? <CircleHelp size={13} className="text-muted" /> : null}
     </div>
@@ -92,13 +92,13 @@ function UploadBox({
       <div className="mx-auto mb-2 grid h-10 w-10 place-items-center rounded-xl bg-white text-brand shadow-sm">
         <ImageIcon size={19} />
       </div>
-      <div className="text-[13.5px] font-semibold">{title}</div>
+      <div className="text-[13.5px] font-medium">{title}</div>
       <p className="mx-auto mt-1 max-w-[420px] text-[12px] leading-5 text-muted">
         Photos up to 10 MB, .jpeg, .jpg, .png formats. Max number of photos is 1. Required image size: {size}
       </p>
       <button
         type="button"
-        className="mt-2.5 inline-flex h-9 items-center rounded-full border border-brand bg-white px-3.5 text-[13px] font-semibold text-brand"
+        className="mt-2.5 inline-flex h-9 items-center rounded-full border border-brand bg-white px-3.5 text-[13px] font-medium text-brand"
       >
         Add Files
       </button>
@@ -163,7 +163,7 @@ export default function PromotionModal({
         }`}
       >
         <div className="flex items-center justify-between border-b border-line px-5 py-3">
-          <h2 className="text-[18px] font-bold tracking-[-0.03em]">
+          <h2 className="text-[18px] font-semibold tracking-[-0.03em]">
             {isEdit ? 'Edit a promotion' : 'Create a promotion'}
           </h2>
           <button
@@ -320,7 +320,7 @@ export default function PromotionModal({
                 key={language}
                 type="button"
                 onClick={() => patch('language', language)}
-                className={`rounded-full px-3.5 py-1.5 text-[12.5px] font-semibold ${
+                className={`rounded-full px-3.5 py-1.5 text-[12.5px] font-medium ${
                   form.language === language
                     ? 'bg-brand text-white'
                     : 'border border-line text-body'
@@ -392,14 +392,14 @@ export default function PromotionModal({
           <button
             type="button"
             onClick={handleClose}
-            className="rounded-full bg-brand px-4 py-2 text-[13.5px] font-semibold text-white"
+            className="rounded-full bg-brand px-4 py-2 text-[13.5px] font-medium text-white"
           >
             Publish
           </button>
           <button
             type="button"
             onClick={handleClose}
-            className="rounded-full bg-line px-4 py-2 text-[13.5px] font-semibold text-body"
+            className="rounded-full bg-line px-4 py-2 text-[13.5px] font-medium text-body"
           >
             Save draft
           </button>

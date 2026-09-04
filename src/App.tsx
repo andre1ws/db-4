@@ -109,7 +109,7 @@ function Header({
                 <ChevronRight size={14} className="text-muted" />
               </>
             ) : null}
-            <span className="text-[16px] font-bold tracking-[-0.02em]">{breadcrumb.label}</span>
+            <span className="text-[16px] font-semibold tracking-[-0.02em]">{breadcrumb.label}</span>
             {onCreate ? (
               <button
                 type="button"
@@ -211,7 +211,7 @@ function AgentRow({ agent }: { agent: Agent }) {
 
   return (
     <tr className="border-b border-line last:border-b-0">
-      <td className="py-2 pl-3 pr-4">
+      <td className="py-1.5 pl-3 pr-4">
         <div className="flex items-center gap-2.5">
           <AgentIcon icon={agent.icon} />
           <div className="min-w-0">
@@ -233,20 +233,20 @@ function AgentRow({ agent }: { agent: Agent }) {
           </div>
         </div>
       </td>
-      <td className="py-2 pl-2 pr-4">
+      <td className="py-1.5 pl-2 pr-4">
         <div className="text-[13px] font-medium">{agent.updatedDate}</div>
         <div className="mt-0.5 flex items-center gap-1 text-[12px] text-muted">
           <Clock3 size={12} />
           {agent.updatedTime}
         </div>
       </td>
-      <td className="py-2 pl-2 pr-4">
+      <td className="py-1.5 pl-2 pr-4">
         <TypeBadge type={agent.type} />
       </td>
-      <td className="py-2 pl-2 pr-4 text-[13.5px] font-medium tabular-nums">
+      <td className="py-1.5 pl-2 pr-4 text-[13.5px] font-medium tabular-nums">
         {agent.runs}
       </td>
-      <td className="py-2 pl-2 pr-4">
+      <td className="py-1.5 pl-2 pr-4">
         <div className="flex items-center gap-1 text-[13px] font-medium">
           <Star size={14} className="fill-[#f5c518] text-[#f5c518]" />
           <span>
@@ -255,10 +255,10 @@ function AgentRow({ agent }: { agent: Agent }) {
           </span>
         </div>
       </td>
-      <td className="py-2 pl-2 pr-4">
+      <td className="py-1.5 pl-2 pr-4">
         <StatusBadge status={agent.status} />
       </td>
-      <td className="py-2 pl-2 pr-3">
+      <td className="py-1.5 pl-2 pr-3">
         <div className="flex items-center justify-end gap-1.5">
           <button
             type="button"
@@ -375,7 +375,7 @@ function AgentsPage() {
             </button>
             <button
               type="button"
-              className="ml-auto inline-flex items-center gap-1.5 rounded-full border border-ink bg-white px-3.5 py-2 text-[13px] font-semibold"
+              className="ml-auto inline-flex items-center gap-1.5 rounded-full border border-ink bg-white px-3.5 py-2 text-[13px] font-medium"
             >
               <Plus size={16} />
               Create Agent
@@ -394,14 +394,14 @@ function AgentsPage() {
                 <col className="w-[15%]" />
               </colgroup>
               <thead>
-                <tr className="bg-chip text-[12.5px] font-semibold text-body">
-                  <th className="rounded-l-xl px-3 py-2">Name :</th>
-                  <th className="px-2 py-2">Last Update :</th>
-                  <th className="px-2 py-2">Type :</th>
-                  <th className="px-2 py-2">Runs :</th>
-                  <th className="px-2 py-2">Rating :</th>
-                  <th className="px-2 py-2">Status :</th>
-                  <th className="rounded-r-xl px-3 py-2 text-right">Actions :</th>
+                <tr className="bg-chip text-[12.5px] font-medium text-body">
+                  <th className="rounded-l-xl px-3 py-1.5">Name :</th>
+                  <th className="px-2 py-1.5">Last Update :</th>
+                  <th className="px-2 py-1.5">Type :</th>
+                  <th className="px-2 py-1.5">Runs :</th>
+                  <th className="px-2 py-1.5">Rating :</th>
+                  <th className="px-2 py-1.5">Status :</th>
+                  <th className="rounded-r-xl px-3 py-1.5 text-right">Actions :</th>
                 </tr>
               </thead>
               <tbody>
@@ -466,7 +466,7 @@ function AgentsPage() {
               <Crown size={20} fill="currentColor" />
             </div>
             <div>
-              <h2 className="text-[15px] font-semibold tracking-[-0.02em]">
+              <h2 className="text-[15px] font-medium tracking-[-0.02em]">
                 Unlock More With Pro
               </h2>
               <p className="mt-0.5 text-[13px] text-muted">
@@ -476,7 +476,7 @@ function AgentsPage() {
           </div>
           <button
             type="button"
-            className="rounded-full bg-ink px-4 py-2 text-[13px] font-semibold text-white"
+            className="rounded-full bg-ink px-4 py-2 text-[13px] font-medium text-white"
           >
             Upgrade to Pro →
           </button>

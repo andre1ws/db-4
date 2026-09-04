@@ -65,7 +65,7 @@ function UserRow({ user, onOpen }: { user: User; onOpen: (user: User) => void })
       tabIndex={0}
       aria-label={`Open profile for ${user.name}`}
     >
-      <td className="py-2 pl-3 pr-4">
+      <td className="py-1.5 pl-3 pr-4">
         <div className="flex min-w-[220px] items-center gap-2.5">
           <UserAvatar user={user} />
           <div className="min-w-0">
@@ -74,7 +74,7 @@ function UserRow({ user, onOpen }: { user: User; onOpen: (user: User) => void })
           </div>
         </div>
       </td>
-      <td className="py-2 pl-2 pr-4">
+      <td className="py-1.5 pl-2 pr-4">
         {user.role ? (
           <span className="inline-flex max-w-full truncate rounded-full bg-chip px-2.5 py-1 text-[12px] font-medium text-body">
             {user.role}
@@ -83,16 +83,16 @@ function UserRow({ user, onOpen }: { user: User; onOpen: (user: User) => void })
           <span className="text-muted">—</span>
         )}
       </td>
-      <td className="py-2 pl-2 pr-4">
+      <td className="py-1.5 pl-2 pr-4">
         <KycBadge status={user.kyc} />
       </td>
-      <td className="py-2 pl-2 pr-4">
+      <td className="py-1.5 pl-2 pr-4">
         <div className="flex items-center gap-2 text-[12.5px] text-body">
           <Device size={15} className="text-muted" />
           {user.lastAction}
         </div>
       </td>
-      <td className="py-2 pl-2 pr-3 text-[12.5px] text-body">{user.registered}</td>
+      <td className="py-1.5 pl-2 pr-3 text-[12.5px] text-body">{user.registered}</td>
     </tr>
   )
 }
@@ -196,14 +196,14 @@ export default function UsersPage() {
             onSavePreset={savePreset}
             onDeletePreset={deletePreset}
           />
-          <div className="ml-auto inline-flex h-9 items-center gap-2 rounded-full bg-brand-soft px-3.5 text-[12.5px] font-semibold text-brand">
+          <div className="ml-auto inline-flex h-9 items-center gap-2 rounded-full bg-brand-soft px-3.5 text-[12.5px] font-medium text-brand">
             <ShieldCheck size={16} />
             Checking KYC
             <span className="grid h-5 min-w-5 place-items-center rounded-full bg-white px-1 text-[11px]">9</span>
           </div>
           <button
             type="button"
-            className="inline-flex h-9 items-center gap-2 rounded-full border border-line-strong bg-white px-3.5 text-[13px] font-semibold"
+            className="inline-flex h-9 items-center gap-2 rounded-full border border-line-strong bg-white px-3.5 text-[13px] font-medium"
           >
             <Download size={15} />
             Export
@@ -220,8 +220,8 @@ export default function UsersPage() {
               <col className="w-[16%]" />
             </colgroup>
             <thead>
-              <tr className="bg-chip text-[12.5px] font-semibold text-body">
-                <th className="rounded-l-xl px-3 py-2">
+              <tr className="bg-chip text-[12.5px] font-medium text-body">
+                <th className="rounded-l-xl px-3 py-1.5">
                   <div className="flex items-center gap-2">
                     User
                     <span className="rounded-full bg-white/70 px-2 py-0.5 text-[10.5px] text-muted">
@@ -229,10 +229,10 @@ export default function UsersPage() {
                     </span>
                   </div>
                 </th>
-                <th className="px-2 py-2">Role</th>
-                <th className="px-2 py-2">KYC status</th>
-                <th className="px-2 py-2">Last action</th>
-                <th className="rounded-r-xl px-3 py-2">Registration date</th>
+                <th className="px-2 py-1.5">Role</th>
+                <th className="px-2 py-1.5">KYC status</th>
+                <th className="px-2 py-1.5">Last action</th>
+                <th className="rounded-r-xl px-3 py-1.5">Registration date</th>
               </tr>
             </thead>
             <tbody>

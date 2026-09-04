@@ -21,7 +21,7 @@ const emptyForm = {
 }
 
 function FieldLabel({ children }: { children: string }) {
-  return <div className="mb-1.5 text-[13px] font-semibold">{children}</div>
+  return <div className="mb-1.5 text-[13px] font-medium">{children}</div>
 }
 
 function SelectField({
@@ -169,7 +169,7 @@ export default function NotificationModal({
         }`}
       >
         <div className="flex items-center justify-between border-b border-line px-5 py-3">
-          <h2 className="text-[18px] font-bold tracking-[-0.03em]">
+          <h2 className="text-[18px] font-semibold tracking-[-0.03em]">
             {isEdit ? 'Edit a notification or article' : 'Create a notification or article'}
           </h2>
           <button
@@ -260,7 +260,7 @@ export default function NotificationModal({
                 key={language}
                 type="button"
                 onClick={() => patch('language', language)}
-                className={`rounded-full px-3.5 py-1.5 text-[12.5px] font-semibold ${
+                className={`rounded-full px-3.5 py-1.5 text-[12.5px] font-medium ${
                   form.language === language ? 'bg-brand text-white' : 'border border-line text-body'
                 }`}
               >
@@ -275,7 +275,7 @@ export default function NotificationModal({
                 key={type}
                 type="button"
                 onClick={() => patch('contentType', type)}
-                className={`rounded-full px-3.5 py-1.5 text-[13px] font-semibold ${
+                className={`rounded-full px-3.5 py-1.5 text-[13px] font-medium ${
                   form.contentType === type
                     ? 'bg-brand-soft text-brand'
                     : 'border border-line text-body'
@@ -328,21 +328,21 @@ export default function NotificationModal({
           <button
             type="button"
             onClick={handleClose}
-            className="rounded-full bg-brand px-4 py-2 text-[13.5px] font-semibold text-white"
+            className="rounded-full bg-brand px-4 py-2 text-[13.5px] font-medium text-white"
           >
             Create
           </button>
           <button
             type="button"
             onClick={handleClose}
-            className="rounded-full bg-line px-4 py-2 text-[13.5px] font-semibold text-muted"
+            className="rounded-full bg-line px-4 py-2 text-[13.5px] font-medium text-muted"
           >
             Preview
           </button>
           <button
             type="button"
             onClick={handleClose}
-            className="rounded-full bg-line px-4 py-2 text-[13.5px] font-semibold text-muted"
+            className="rounded-full bg-line px-4 py-2 text-[13.5px] font-medium text-muted"
           >
             Save draft
           </button>

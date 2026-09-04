@@ -63,7 +63,7 @@ function PresetChip({
 }) {
   return (
     <span
-      className={`inline-flex h-9 items-center gap-1 rounded-full border pl-3 pr-1.5 text-[12.5px] font-semibold transition ${
+      className={`inline-flex h-9 items-center gap-1 rounded-full border pl-3 pr-1.5 text-[12.5px] font-medium transition ${
         active ? 'border-brand bg-brand-soft text-brand' : 'border-line bg-white text-body hover:bg-hover'
       }`}
     >
@@ -201,7 +201,7 @@ export default function UsersFilterPanel({
         >
           <ListFilter size={16} />
           {rules.length ? (
-            <span className="absolute -right-1.5 -top-1.5 grid h-4 min-w-4 place-items-center rounded-full bg-brand px-1 text-[10px] font-semibold text-white">
+            <span className="absolute -right-1.5 -top-1.5 grid h-4 min-w-4 place-items-center rounded-full bg-brand px-1 text-[10px] font-medium text-white">
               {rules.length}
             </span>
           ) : null}
@@ -235,7 +235,7 @@ export default function UsersFilterPanel({
                       key={item}
                       type="button"
                       onClick={() => setCondition(item)}
-                      className={`flex-1 rounded-lg py-1.5 text-[12px] font-semibold transition ${
+                      className={`flex-1 rounded-lg py-1.5 text-[12px] font-medium transition ${
                         condition === item ? 'bg-brand text-white' : 'text-body hover:bg-hover'
                       }`}
                     >
@@ -264,7 +264,7 @@ export default function UsersFilterPanel({
               type="button"
               onClick={addRule}
               disabled={condition !== 'empty' && !value}
-              className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-3 py-1.5 text-[12.5px] font-semibold text-brand disabled:opacity-40"
+              className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-3 py-1.5 text-[12.5px] font-medium text-brand disabled:opacity-40"
             >
               <Plus size={14} />
               Add filter
@@ -277,7 +277,7 @@ export default function UsersFilterPanel({
                   <button
                     type="button"
                     onClick={handleClear}
-                    className="text-[12px] font-semibold text-muted hover:text-ink"
+                    className="text-[12px] font-medium text-muted hover:text-ink"
                   >
                     Clear
                   </button>
@@ -293,7 +293,7 @@ export default function UsersFilterPanel({
                       className="inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-[12px] font-medium text-body shadow-sm"
                     >
                       <span className="text-muted">{conditionLabel[rule.condition]}</span>
-                      <span className="font-semibold text-ink">{ruleLabel(rule)}</span>
+                      <span className="font-medium text-ink">{ruleLabel(rule)}</span>
                       <button
                         type="button"
                         onClick={() => removeRule(rule.id)}
@@ -312,7 +312,7 @@ export default function UsersFilterPanel({
               <button
                 type="button"
                 onClick={handleConfirm}
-                className="rounded-full bg-brand px-4 py-2 text-[13px] font-semibold text-white"
+                className="rounded-full bg-brand px-4 py-2 text-[13px] font-medium text-white"
               >
                 Confirm
               </button>
@@ -320,7 +320,7 @@ export default function UsersFilterPanel({
                 <button
                   type="button"
                   onClick={handleDeletePreset}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#fecaca] px-3 py-2 text-[12.5px] font-semibold text-[#b91c1c]"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#fecaca] px-3 py-2 text-[12.5px] font-medium text-[#b91c1c]"
                 >
                   <Trash2 size={14} />
                   Delete preset
@@ -340,7 +340,7 @@ export default function UsersFilterPanel({
                   type="button"
                   onClick={handleCreatePreset}
                   disabled={!presetName.trim() || draft.length === 0}
-                  className="rounded-full bg-ink px-3.5 py-2 text-[12.5px] font-semibold text-white disabled:opacity-40"
+                  className="rounded-full bg-ink px-3.5 py-2 text-[12.5px] font-medium text-white disabled:opacity-40"
                 >
                   Create
                 </button>
@@ -369,7 +369,7 @@ export default function UsersFilterPanel({
           <button
             type="button"
             onClick={() => setShowMorePresets((v) => !v)}
-            className={`inline-flex h-9 items-center rounded-full border px-3.5 text-[12.5px] font-semibold transition ${
+            className={`inline-flex h-9 items-center rounded-full border px-3.5 text-[12.5px] font-medium transition ${
               showMorePresets ? 'border-brand bg-brand-soft text-brand' : 'border-line bg-white text-body hover:bg-hover'
             }`}
           >

@@ -24,6 +24,13 @@
   --color-brand-soft: #f3eefe;
   --color-brand-tint: #efe8ff;
 
+  --color-nav-bg: #1c1e23;
+  --color-nav-text: #c7cbd3;
+  --color-nav-icon: #868f9c;
+  --color-nav-muted: #6b7280;
+  --color-nav-line: #2b2e35;
+  --color-nav-hover: #24262c;
+
   --color-private: #ece4fb;
   --color-private-dot: #8b5cf6;
   --color-public: #dcfce7;

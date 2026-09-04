@@ -75,7 +75,7 @@ export default function NotificationsPage({
           </button>
           <button
             type="button"
-            className="ml-auto inline-flex h-9 items-center gap-2 rounded-full border border-line-strong bg-white px-3.5 text-[13px] font-semibold"
+            className="ml-auto inline-flex h-9 items-center gap-2 rounded-full border border-line-strong bg-white px-3.5 text-[13px] font-medium"
           >
             <Archive size={15} />
             Archive
@@ -92,8 +92,8 @@ export default function NotificationsPage({
               <col className="w-[14%]" />
             </colgroup>
             <thead>
-              <tr className="bg-chip text-[12.5px] font-semibold text-body">
-                <th className="rounded-l-xl px-3 py-2">
+              <tr className="bg-chip text-[12.5px] font-medium text-body">
+                <th className="rounded-l-xl px-3 py-1.5">
                   <div className="flex items-center gap-2">
                     Sender
                     <span className="rounded-full bg-white/70 px-2 py-0.5 text-[10.5px] text-muted">
@@ -101,10 +101,10 @@ export default function NotificationsPage({
                     </span>
                   </div>
                 </th>
-                <th className="px-2 py-2">Segment</th>
-                <th className="px-2 py-2 text-center">Push</th>
-                <th className="px-2 py-2">Message</th>
-                <th className="rounded-r-xl px-3 py-2">
+                <th className="px-2 py-1.5">Segment</th>
+                <th className="px-2 py-1.5 text-center">Push</th>
+                <th className="px-2 py-1.5">Message</th>
+                <th className="rounded-r-xl px-3 py-1.5">
                   <div className="flex items-center gap-1">
                     Sent
                     <ArrowDown size={13} />
@@ -128,7 +128,7 @@ export default function NotificationsPage({
                   tabIndex={0}
                   aria-label={`Open notification from ${item.sender}`}
                 >
-                  <td className="py-2.5 pl-3 pr-2">
+                  <td className="py-1.5 pl-3 pr-2">
                     <div className="flex items-center gap-2.5">
                       <SenderAvatar item={item} />
                       <div className="min-w-0">
@@ -137,21 +137,21 @@ export default function NotificationsPage({
                       </div>
                     </div>
                   </td>
-                  <td className="px-2 py-2.5">
+                  <td className="px-2 py-1.5">
                     <SegmentPill>{item.segment}</SegmentPill>
                   </td>
-                  <td className="px-2 py-2.5 text-center">
+                  <td className="px-2 py-1.5 text-center">
                     {item.pushSent ? (
                       <span className="inline-grid h-5 w-5 place-items-center rounded-full border border-line-strong text-muted">
                         <Check size={12} />
                       </span>
                     ) : null}
                   </td>
-                  <td className="px-2 py-2.5">
+                  <td className="px-2 py-1.5">
                     <div className="truncate text-[13.5px] font-medium">{item.title}</div>
                     <div className="mt-0.5 truncate text-[12px] text-muted">{item.preview}</div>
                   </td>
-                  <td className="px-3 py-2.5 text-[13px] text-body">{item.sentDate}</td>
+                  <td className="px-3 py-1.5 text-[13px] text-body">{item.sentDate}</td>
                 </tr>
               ))}
               {filtered.length === 0 ? (

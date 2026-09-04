@@ -134,7 +134,7 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
             >
               <Rocket size={15} />
               Quick Transfer
-              <span className="font-semibold text-ink">{stats.quickTransfer}</span>
+              <span className="font-medium text-ink">{stats.quickTransfer}</span>
             </button>
             <button
               type="button"
@@ -142,11 +142,11 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
             >
               <AlertTriangle size={15} />
               Require clarification
-              <span className="font-semibold text-ink">{stats.requireClarification}</span>
+              <span className="font-medium text-ink">{stats.requireClarification}</span>
             </button>
             <button
               type="button"
-              className="flex items-center gap-1.5 text-[13px] font-semibold text-ink"
+              className="flex items-center gap-1.5 text-[13px] font-medium text-ink"
             >
               <Inbox size={15} />
               New
@@ -174,8 +174,8 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
               <col className="w-[9%]" />
             </colgroup>
             <thead>
-              <tr className="bg-chip text-[12.5px] font-semibold text-body">
-                <th className="rounded-l-xl px-3 py-2">
+              <tr className="bg-chip text-[12.5px] font-medium text-body">
+                <th className="rounded-l-xl px-3 py-1.5">
                   <div className="flex items-center gap-2">
                     User
                     <span className="rounded-full bg-white/70 px-2 py-0.5 text-[10.5px] text-muted">
@@ -183,38 +183,38 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
                     </span>
                   </div>
                 </th>
-                <th className="px-2 py-2">Status</th>
-                <th className="px-2 py-2">
+                <th className="px-2 py-1.5">Status</th>
+                <th className="px-2 py-1.5">
                   <div className="flex items-center gap-1">
                     Expresses
                     <CircleHelp size={13} className="text-muted" />
                   </div>
                 </th>
-                <th className="px-2 py-2">
+                <th className="px-2 py-1.5">
                   <div className="flex items-center gap-1">
                     Date of creation
                     <ArrowDown size={13} />
                   </div>
                 </th>
-                <th className="px-2 py-2">
+                <th className="px-2 py-1.5">
                   <div className="flex items-center gap-1">
                     Updated at
                     <ArrowUpDown size={13} className="text-muted" />
                   </div>
                 </th>
-                <th className="px-2 py-2">
+                <th className="px-2 py-1.5">
                   <div className="flex items-center gap-1">
                     Payment method
                     <CircleHelp size={13} className="text-muted" />
                   </div>
                 </th>
-                <th className="rounded-r-xl px-3 py-2 text-right">Amount</th>
+                <th className="rounded-r-xl px-3 py-1.5 text-right">Amount</th>
               </tr>
             </thead>
             <tbody>
               {visible.map((item) => (
                 <tr key={item.id} className="border-b border-line last:border-b-0 hover:bg-hover">
-                  <td className="py-2 pl-3 pr-4">
+                  <td className="py-1.5 pl-3 pr-4">
                     <div className="flex items-center gap-2.5">
                       <TransactionAvatar transaction={item} />
                       <div className="flex min-w-0 items-center gap-1.5">
@@ -225,16 +225,16 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
                       </div>
                     </div>
                   </td>
-                  <td className="py-2 pl-2 pr-4">
+                  <td className="py-1.5 pl-2 pr-4">
                     <StatusBadge status={item.status} />
                   </td>
-                  <td className="py-2 pl-2 pr-4 text-[13px] text-body">{item.expresses ? 'Yes' : 'No'}</td>
-                  <td className="py-2 pl-2 pr-4 text-[13px] text-body">{item.createdDate}</td>
-                  <td className="py-2 pl-2 pr-4 text-[13px] text-body">{item.updatedDate}</td>
-                  <td className={`truncate py-2 pl-2 pr-4 text-[13px] ${methodStyles[item.methodTone]}`}>
+                  <td className="py-1.5 pl-2 pr-4 text-[13px] text-body">{item.expresses ? 'Yes' : 'No'}</td>
+                  <td className="py-1.5 pl-2 pr-4 text-[13px] text-body">{item.createdDate}</td>
+                  <td className="py-1.5 pl-2 pr-4 text-[13px] text-body">{item.updatedDate}</td>
+                  <td className={`truncate py-1.5 pl-2 pr-4 text-[13px] ${methodStyles[item.methodTone]}`}>
                     {item.method}
                   </td>
-                  <td className="py-2 pl-2 pr-3 text-right text-[13.5px] font-semibold tabular-nums">
+                  <td className="py-1.5 pl-2 pr-3 text-right text-[13.5px] font-medium tabular-nums">
                     {currency(item.amount)}
                   </td>
                 </tr>
@@ -263,8 +263,8 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
         </div>
 
         <div className="mt-3 flex items-center justify-between rounded-xl bg-chip px-4 py-3">
-          <span className="text-[13px] font-semibold text-body">Total</span>
-          <span className="text-[15px] font-bold tabular-nums">{currency(total)}</span>
+          <span className="text-[13px] font-medium text-body">Total</span>
+          <span className="text-[15px] font-semibold tabular-nums">{currency(total)}</span>
         </div>
       </section>
     </main>
