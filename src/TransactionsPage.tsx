@@ -39,7 +39,7 @@ const methodStyles: Record<MethodTone, string> = {
 function StatusBadge({ status }: { status: TransactionStatus }) {
   return (
     <span
-      className={`inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase ${statusStyles[status]}`}
+      className={`inline-flex rounded-full px-2.5 py-1 text-[11px] font-medium uppercase ${statusStyles[status]}`}
     >
       {status}
     </span>
@@ -208,7 +208,7 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
                     <div className="flex items-center gap-2.5">
                       <TransactionAvatar transaction={item} />
                       <div className="flex min-w-0 items-center gap-1.5">
-                        <span className="truncate text-[13.5px] font-semibold">{item.user}</span>
+                        <span className="truncate text-[13.5px] font-medium">{item.user}</span>
                         {item.quickTransfer ? (
                           <Rocket size={13} className="shrink-0 text-brand" />
                         ) : null}

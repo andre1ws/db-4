@@ -132,7 +132,7 @@ export default function Sidebar({
             }`}
           >
             <span className="grid h-7 w-7 place-items-center text-body">
-              <UsersRound size={15} strokeWidth={2.4} />
+              <UsersRound size={15} strokeWidth={1.75} />
             </span>
             <span className="flex-1 font-medium">Administrator</span>
             {adminOpen ? (
@@ -145,7 +145,7 @@ export default function Sidebar({
           {adminOpen ? <SubNavGroup items={adminItems} active={active} onNavigate={onNavigate} /> : null}
 
           <NavItem
-            icon={<FileText size={16} strokeWidth={2.4} />}
+            icon={<FileText size={16} strokeWidth={1.75} />}
             label="Departments"
             active={active === 'departments'}
             onClick={() => onNavigate('departments')}
@@ -159,7 +159,7 @@ export default function Sidebar({
             }`}
           >
             <span className="grid h-7 w-7 place-items-center text-body">
-              <CircleDollarSign size={16} strokeWidth={2.4} />
+              <CircleDollarSign size={16} strokeWidth={1.75} />
             </span>
             <span className="flex-1 font-medium">Payments</span>
             {paymentsOpen ? (
@@ -172,27 +172,27 @@ export default function Sidebar({
           {paymentsOpen ? <SubNavGroup items={paymentItems} active={active} onNavigate={onNavigate} /> : null}
 
           <NavItem
-            icon={<Handshake size={16} strokeWidth={2.4} />}
+            icon={<Handshake size={16} strokeWidth={1.75} />}
             label="CSP"
             active={active === 'csp'}
             onClick={() => onNavigate('csp')}
             chevron
           />
           <NavItem
-            icon={<Building2 size={16} strokeWidth={2.4} />}
+            icon={<Building2 size={16} strokeWidth={1.75} />}
             label="Payment accounts"
             active={active === 'accounts'}
             onClick={() => onNavigate('accounts')}
             chevron
           />
           <NavItem
-            icon={<Percent size={16} strokeWidth={2.4} />}
+            icon={<Percent size={16} strokeWidth={1.75} />}
             label="Contracts"
             active={active === 'contracts'}
             onClick={() => onNavigate('contracts')}
           />
           <NavItem
-            icon={<PlaySquare size={16} strokeWidth={2.4} />}
+            icon={<PlaySquare size={16} strokeWidth={1.75} />}
             label="Requests"
             active={active === 'requests'}
             onClick={() => onNavigate('requests')}
@@ -200,37 +200,37 @@ export default function Sidebar({
             chevron
           />
           <NavItem
-            icon={<BarChart3 size={16} strokeWidth={2.4} />}
+            icon={<BarChart3 size={16} strokeWidth={1.75} />}
             label="Analytics"
             active={active === 'analytics'}
             onClick={() => onNavigate('analytics')}
           />
           <NavItem
-            icon={<Wallet size={16} strokeWidth={2.4} />}
+            icon={<Wallet size={16} strokeWidth={1.75} />}
             label="Funds"
             active={active === 'funds'}
             onClick={() => onNavigate('funds')}
           />
           <NavItem
-            icon={<Gift size={16} strokeWidth={2.4} />}
+            icon={<Gift size={16} strokeWidth={1.75} />}
             label="Perks and Benefits"
             active={active === 'perks'}
             onClick={() => onNavigate('perks')}
           />
           <NavItem
-            icon={<Monitor size={16} strokeWidth={2.4} />}
+            icon={<Monitor size={16} strokeWidth={1.75} />}
             label="Assets"
             active={active === 'assets'}
             onClick={() => onNavigate('assets')}
           />
           <NavItem
-            icon={<Video size={16} strokeWidth={2.4} />}
+            icon={<Video size={16} strokeWidth={1.75} />}
             label="Channels"
             active={active === 'channels'}
             onClick={() => onNavigate('channels')}
           />
           <NavItem
-            icon={<BookOpen size={16} strokeWidth={2.4} />}
+            icon={<BookOpen size={16} strokeWidth={1.75} />}
             label="Knowledge base"
             active={active === 'knowledge'}
             onClick={() => onNavigate('knowledge')}

@@ -215,7 +215,7 @@ function AgentRow({ agent }: { agent: Agent }) {
         <div className="flex items-center gap-2.5">
           <AgentIcon icon={agent.icon} />
           <div className="min-w-0">
-            <div className="truncate text-[13.5px] font-semibold tracking-[-0.01em]">
+            <div className="truncate text-[13.5px] font-medium tracking-[-0.01em]">
               {agent.name}
             </div>
             <div className="mt-0.5 flex items-center gap-1 text-[11.5px] text-muted">

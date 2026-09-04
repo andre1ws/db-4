@@ -30,7 +30,7 @@ function KycBadge({ status }: { status: KycStatus }) {
   }
 
   return (
-    <span className={`inline-flex rounded-full px-2.5 py-0.5 text-[11.5px] font-semibold ${styles[status]}`}>
+    <span className={`inline-flex rounded-full px-2.5 py-0.5 text-[11.5px] font-medium ${styles[status]}`}>
       {status}
     </span>
   )
@@ -69,7 +69,7 @@ function UserRow({ user, onOpen }: { user: User; onOpen: (user: User) => void })
         <div className="flex min-w-[220px] items-center gap-2.5">
           <UserAvatar user={user} />
           <div className="min-w-0">
-            <div className="truncate text-[13.5px] font-semibold">{user.name}</div>
+            <div className="truncate text-[13.5px] font-medium">{user.name}</div>
             <div className="mt-0.5 truncate text-[11.5px] text-muted">{user.email}</div>
           </div>
         </div>

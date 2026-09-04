@@ -110,7 +110,7 @@ export default function PromotionsPage({
                   tabIndex={0}
                   aria-label={`Open promotion ${item.name}`}
                 >
-                  <td className="truncate px-3 py-2 text-[13.5px] font-semibold">{item.name}</td>
+                  <td className="truncate px-3 py-2 text-[13.5px] font-medium">{item.name}</td>
                   <td className="px-2 py-2">
                     <Pill>{item.segment}</Pill>
                   </td>
