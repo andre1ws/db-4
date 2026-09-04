@@ -78,13 +78,13 @@ function SubNavGroup({
           onClick={() => onNavigate(item.key)}
           className={`flex items-center gap-2 rounded-xl px-2.5 py-1.5 text-left transition ${
             active === item.key
-              ? 'bg-brand-soft font-semibold text-brand'
+              ? 'bg-brand-soft/60 font-semibold text-brand'
               : 'text-muted hover:bg-hover hover:text-ink'
           }`}
         >
           <span className="flex-1">{item.label}</span>
           {item.count ? (
-            <span className="grid h-5 min-w-5 place-items-center rounded-full bg-brand px-1 text-[11px] font-semibold text-white">
+            <span className="grid h-[18px] min-w-[18px] place-items-center rounded-full bg-brand px-1 text-[10px] font-semibold text-white">
               {item.count}
             </span>
           ) : null}
@@ -262,7 +262,7 @@ function NavItem({
       onClick={onClick}
       className={`flex w-full items-center gap-2.5 rounded-xl px-2.5 py-2 text-left transition ${
         active
-          ? 'bg-brand-soft font-semibold text-brand'
+          ? 'bg-brand-soft/60 font-semibold text-brand'
           : 'text-body hover:bg-hover'
       }`}
     >

@@ -1,4 +1,4 @@
-import { Archive, ArrowDown, Check, Filter, Search, UserRound, Zap } from 'lucide-react'
+import { Archive, ArrowDown, Check, ListFilter, Search, UserRound, Zap } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import NotificationModal from './NotificationModal'
 import { NOTIFICATIONS_TOTAL, notifications, type Notification } from './notifications'
@@ -71,7 +71,7 @@ export default function NotificationsPage({
             className="grid h-9 w-9 place-items-center rounded-xl border border-line bg-white"
             aria-label="More filters"
           >
-            <Filter size={16} />
+            <ListFilter size={16} />
           </button>
           <button
             type="button"

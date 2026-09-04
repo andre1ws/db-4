@@ -1,6 +1,6 @@
 import {
   Archive,
-  Filter,
+  ListFilter,
   Search,
 } from 'lucide-react'
 import { useMemo, useState } from 'react'
@@ -56,7 +56,7 @@ export default function PromotionsPage({
             className="grid h-9 w-9 place-items-center rounded-xl border border-line bg-white"
             aria-label="More filters"
           >
-            <Filter size={16} />
+            <ListFilter size={16} />
           </button>
           <button
             type="button"

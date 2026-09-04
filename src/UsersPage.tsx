@@ -38,12 +38,12 @@ function KycBadge({ status }: { status: KycStatus }) {
 
 function UserAvatar({ user }: { user: User }) {
   if (user.avatar) {
-    return <img src={user.avatar} alt="" className="h-9 w-9 rounded-xl object-cover" />
+    return <img src={user.avatar} alt="" className="h-9 w-9 rounded-full object-cover" />
   }
 
   return (
-    <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-brand-tint text-brand">
-      <UserRound size={18} strokeWidth={2.2} />
+    <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-tint text-brand">
+      <UserRound size={16} strokeWidth={2.2} />
     </div>
   )
 }

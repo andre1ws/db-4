@@ -2,17 +2,16 @@ import {
   AlertTriangle,
   ArrowDown,
   ArrowUpDown,
-  ChevronLeft,
-  ChevronRight,
   CircleHelp,
   Download,
-  Filter,
   Inbox,
+  ListFilter,
+  Loader2,
   Rocket,
   Search,
   UserRound,
 } from 'lucide-react'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   REGION_STATS,
   TRANSACTIONS_PAGE_SIZE,
@@ -69,7 +68,8 @@ function currency(amount: number) {
 
 export default function TransactionsPage({ region }: { region: TransactionRegion }) {
   const [query, setQuery] = useState('')
-  const [page, setPage] = useState(1)
+  const [visibleCount, setVisibleCount] = useState(TRANSACTIONS_PAGE_SIZE)
+  const sentinelRef = useRef<HTMLDivElement | null>(null)
   const stats = REGION_STATS[region]
 
   const filtered = useMemo(() => {
@@ -81,14 +81,24 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
 
   const total = useMemo(() => filtered.reduce((sum, item) => sum + item.amount, 0), [filtered])
 
-  const pageCount = Math.max(1, Math.ceil(filtered.length / TRANSACTIONS_PAGE_SIZE))
-  const currentPage = Math.min(page, pageCount)
-  const start = (currentPage - 1) * TRANSACTIONS_PAGE_SIZE
-  const visible = filtered.slice(start, start + TRANSACTIONS_PAGE_SIZE)
+  const visible = filtered.slice(0, visibleCount)
+  const hasMore = visibleCount < filtered.length
 
-  function goToPage(next: number) {
-    setPage(Math.min(pageCount, Math.max(1, next)))
-  }
+  useEffect(() => {
+    const node = sentinelRef.current
+    if (!node || !hasMore) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisibleCount((count) => Math.min(count + TRANSACTIONS_PAGE_SIZE, filtered.length))
+        }
+      },
+      { rootMargin: '200px' },
+    )
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [hasMore, filtered.length])
 
   return (
     <main className="pl-2 pr-4 py-4">
@@ -103,7 +113,7 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
               value={query}
               onChange={(event) => {
                 setQuery(event.target.value)
-                setPage(1)
+                setVisibleCount(TRANSACTIONS_PAGE_SIZE)
               }}
               placeholder="Username / Email / Account Number"
               className="h-9 w-full rounded-full border border-line bg-input pl-10 pr-4 text-[13.5px] outline-none placeholder:text-placeholder focus:border-line-focus"
@@ -114,7 +124,7 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
             className="grid h-9 w-9 place-items-center rounded-xl border border-line bg-white"
             aria-label="More filters"
           >
-            <Filter size={16} />
+            <ListFilter size={16} />
           </button>
 
           <div className="ml-auto flex flex-wrap items-center gap-4">
@@ -240,43 +250,16 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
           </table>
         </div>
 
-        <div className="mt-3 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-3">
+        <div className="mt-3 flex flex-col items-center gap-2 border-t border-line pt-3">
           <p className="text-[13px] text-muted">
-            Showing {filtered.length ? start + 1 : 0} to{' '}
-            {Math.min(start + TRANSACTIONS_PAGE_SIZE, filtered.length)} of {filtered.length} transactions.
+            Showing {visible.length} of {filtered.length} transactions.
           </p>
-          <div className="flex items-center gap-1.5">
-            <button
-              type="button"
-              onClick={() => goToPage(currentPage - 1)}
-              disabled={currentPage === 1}
-              className="grid h-7 w-7 place-items-center rounded-full border border-line disabled:opacity-40"
-              aria-label="Previous page"
-            >
-              <ChevronLeft size={16} />
-            </button>
-            {Array.from({ length: pageCount }, (_, index) => index + 1).map((item) => (
-              <button
-                key={item}
-                type="button"
-                onClick={() => goToPage(item)}
-                className={`grid h-7 w-7 place-items-center rounded-full text-[13px] font-medium ${
-                  item === currentPage ? 'bg-ink text-white' : 'hover:bg-hover-strong'
-                }`}
-              >
-                {item}
-              </button>
-            ))}
-            <button
-              type="button"
-              onClick={() => goToPage(currentPage + 1)}
-              disabled={currentPage === pageCount}
-              className="grid h-7 w-7 place-items-center rounded-full border border-line disabled:opacity-40"
-              aria-label="Next page"
-            >
-              <ChevronRight size={16} />
-            </button>
-          </div>
+          {hasMore ? (
+            <div ref={sentinelRef} className="flex items-center gap-1.5 py-1 text-[12.5px] text-muted">
+              <Loader2 size={14} className="animate-spin" />
+              Loading more...
+            </div>
+          ) : null}
         </div>
 
         <div className="mt-3 flex items-center justify-between rounded-xl bg-chip px-4 py-3">
