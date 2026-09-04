@@ -70,7 +70,7 @@ function SubNavGroup({
   onNavigate: (key: NavKey) => void
 }) {
   return (
-    <div className="mb-0.5 ml-3.5 flex flex-col gap-0.5 border-l border-nav-line pl-2.5">
+    <div className="ml-3.5 flex flex-col gap-1 border-l border-nav-line pl-2.5">
       {items.map((item) => (
         <button
           key={item.key}
@@ -123,7 +123,7 @@ export default function Sidebar({
           Sections
         </div>
 
-        <nav className="nav-scroll mt-2 flex flex-1 flex-col gap-0.5 overflow-y-auto text-[13.5px]">
+        <nav className="nav-scroll mt-2 flex flex-1 flex-col gap-1 overflow-y-auto text-[13.5px]">
           <button
             type="button"
             onClick={() => setAdminOpen((open) => !open)}
