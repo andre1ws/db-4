@@ -82,7 +82,7 @@ function SubNavGroup({
               : 'text-nav-muted hover:bg-nav-hover hover:text-nav-text'
           }`}
         >
-          <span className="flex-1">{item.label}</span>
+          <span className="min-w-0 flex-1 truncate">{item.label}</span>
           {item.count ? (
             <span className="grid h-[18px] min-w-[18px] place-items-center rounded-full bg-brand px-1 text-[10px] font-medium text-white">
               {item.count}
@@ -134,7 +134,7 @@ export default function Sidebar({
             <span className="grid h-7 w-7 place-items-center text-nav-icon">
               <UsersRound size={15} strokeWidth={1.75} />
             </span>
-            <span className="flex-1 font-medium">Administrator</span>
+            <span className="min-w-0 flex-1 truncate font-medium">Administrator</span>
             {adminOpen ? (
               <ChevronDown size={15} className="text-nav-muted" />
             ) : (
@@ -161,7 +161,7 @@ export default function Sidebar({
             <span className="grid h-7 w-7 place-items-center text-nav-icon">
               <CircleDollarSign size={16} strokeWidth={1.75} />
             </span>
-            <span className="flex-1 font-medium">Payments</span>
+            <span className="min-w-0 flex-1 truncate font-medium">Payments</span>
             {paymentsOpen ? (
               <ChevronDown size={15} className="text-nav-muted" />
             ) : (
@@ -267,7 +267,7 @@ function NavItem({
       }`}
     >
       <span className="grid h-7 w-7 place-items-center text-nav-icon">{icon}</span>
-      <span className="flex-1">{label}</span>
+      <span className="min-w-0 flex-1 truncate">{label}</span>
       {badge ? <span className="h-2 w-2 rounded-full bg-private-dot" /> : null}
       {chevron ? <ChevronRight size={15} className="text-nav-muted" /> : null}
     </button>
