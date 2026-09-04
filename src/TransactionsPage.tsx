@@ -14,10 +14,12 @@ import {
 } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import {
+  REGION_STATS,
   TRANSACTIONS_PAGE_SIZE,
   transactions,
   type MethodTone,
   type Transaction,
+  type TransactionRegion,
   type TransactionStatus,
 } from './transactions'
 
@@ -65,14 +67,17 @@ function currency(amount: number) {
   })
 }
 
-export default function TransactionsPage() {
+export default function TransactionsPage({ region }: { region: TransactionRegion }) {
   const [query, setQuery] = useState('')
   const [page, setPage] = useState(1)
+  const stats = REGION_STATS[region]
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase()
-    return transactions.filter((item) => !normalized || item.user.toLowerCase().includes(normalized))
-  }, [query])
+    return transactions.filter(
+      (item) => item.region === region && (!normalized || item.user.toLowerCase().includes(normalized)),
+    )
+  }, [query, region])
 
   const total = useMemo(() => filtered.reduce((sum, item) => sum + item.amount, 0), [filtered])
 
@@ -119,7 +124,7 @@ export default function TransactionsPage() {
             >
               <Rocket size={15} />
               Quick Transfer
-              <span className="font-semibold text-ink">0</span>
+              <span className="font-semibold text-ink">{stats.quickTransfer}</span>
             </button>
             <button
               type="button"
@@ -127,7 +132,7 @@ export default function TransactionsPage() {
             >
               <AlertTriangle size={15} />
               Require clarification
-              <span className="font-semibold text-ink">2</span>
+              <span className="font-semibold text-ink">{stats.requireClarification}</span>
             </button>
             <button
               type="button"
@@ -135,7 +140,7 @@ export default function TransactionsPage() {
             >
               <Inbox size={15} />
               New
-              <span>53</span>
+              <span>{stats.new}</span>
             </button>
             <button
               type="button"

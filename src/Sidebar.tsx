@@ -25,7 +25,12 @@ type NavKey =
   | 'promotions'
   | 'roles'
   | 'departments'
-  | 'payments'
+  | 'payments-cy'
+  | 'payments-ca'
+  | 'payments-cis'
+  | 'payments-hk'
+  | 'payment-methods'
+  | 'regions'
   | 'csp'
   | 'accounts'
   | 'contracts'
@@ -38,13 +43,56 @@ type NavKey =
   | 'knowledge'
   | 'agents'
 
-const adminItems: { key: NavKey; label: string }[] = [
+const adminItems: { key: NavKey; label: string; count?: number }[] = [
   { key: 'users', label: 'Users' },
   { key: 'notifications', label: 'Notifications' },
   { key: 'labels', label: 'Labels' },
   { key: 'promotions', label: 'Promotions' },
   { key: 'roles', label: 'Roles' },
 ]
+
+const paymentItems: { key: NavKey; label: string; count?: number }[] = [
+  { key: 'payments-cy', label: 'Transactions CY', count: 37 },
+  { key: 'payments-ca', label: 'Transactions CA' },
+  { key: 'payments-cis', label: 'Transactions CIS', count: 68 },
+  { key: 'payments-hk', label: 'Transactions HK', count: 1 },
+  { key: 'payment-methods', label: 'Payment methods' },
+  { key: 'regions', label: 'Regions' },
+]
+
+function SubNavGroup({
+  items,
+  active,
+  onNavigate,
+}: {
+  items: { key: NavKey; label: string; count?: number }[]
+  active: NavKey
+  onNavigate: (key: NavKey) => void
+}) {
+  return (
+    <div className="mb-0.5 ml-3.5 flex flex-col gap-0.5 border-l border-line pl-2.5">
+      {items.map((item) => (
+        <button
+          key={item.key}
+          type="button"
+          onClick={() => onNavigate(item.key)}
+          className={`flex items-center gap-2 rounded-xl px-2.5 py-1.5 text-left transition ${
+            active === item.key
+              ? 'bg-brand-soft font-semibold text-brand'
+              : 'text-muted hover:bg-hover hover:text-ink'
+          }`}
+        >
+          <span className="flex-1">{item.label}</span>
+          {item.count ? (
+            <span className="grid h-5 min-w-5 place-items-center rounded-full bg-brand px-1 text-[11px] font-semibold text-white">
+              {item.count}
+            </span>
+          ) : null}
+        </button>
+      ))}
+    </div>
+  )
+}
 
 export default function Sidebar({
   active,
@@ -54,7 +102,9 @@ export default function Sidebar({
   onNavigate: (key: NavKey) => void
 }) {
   const [adminOpen, setAdminOpen] = useState(true)
+  const [paymentsOpen, setPaymentsOpen] = useState(true)
   const isAdmin = adminItems.some((item) => item.key === active)
+  const isPayments = paymentItems.some((item) => item.key === active)
 
   return (
     <aside className="sticky top-0 flex h-svh w-[224px] shrink-0 flex-col py-3 pl-3 pr-1.5">
@@ -92,24 +142,7 @@ export default function Sidebar({
             )}
           </button>
 
-          {adminOpen ? (
-            <div className="mb-0.5 ml-3.5 flex flex-col gap-0.5 border-l border-line pl-2.5">
-              {adminItems.map((item) => (
-                <button
-                  key={item.key}
-                  type="button"
-                  onClick={() => onNavigate(item.key)}
-                  className={`rounded-xl px-2.5 py-1.5 text-left transition ${
-                    active === item.key
-                      ? 'bg-brand-soft font-semibold text-brand'
-                      : 'text-muted hover:bg-hover hover:text-ink'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          ) : null}
+          {adminOpen ? <SubNavGroup items={adminItems} active={active} onNavigate={onNavigate} /> : null}
 
           <NavItem
             icon={<FileText size={16} strokeWidth={2.4} />}
@@ -117,14 +150,27 @@ export default function Sidebar({
             active={active === 'departments'}
             onClick={() => onNavigate('departments')}
           />
-          <NavItem
-            icon={<CircleDollarSign size={16} strokeWidth={2.4} />}
-            label="Payments"
-            active={active === 'payments'}
-            onClick={() => onNavigate('payments')}
-            badge
-            chevron
-          />
+
+          <button
+            type="button"
+            onClick={() => setPaymentsOpen((open) => !open)}
+            className={`flex w-full items-center gap-2.5 rounded-xl px-2.5 py-2 text-left transition hover:bg-hover ${
+              isPayments ? 'text-ink' : 'text-body'
+            }`}
+          >
+            <span className="grid h-7 w-7 place-items-center text-body">
+              <CircleDollarSign size={16} strokeWidth={2.4} />
+            </span>
+            <span className="flex-1 font-medium">Payments</span>
+            {paymentsOpen ? (
+              <ChevronDown size={15} className="text-muted" />
+            ) : (
+              <ChevronRight size={15} className="text-muted" />
+            )}
+          </button>
+
+          {paymentsOpen ? <SubNavGroup items={paymentItems} active={active} onNavigate={onNavigate} /> : null}
+
           <NavItem
             icon={<Handshake size={16} strokeWidth={2.4} />}
             label="CSP"

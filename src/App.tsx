@@ -43,7 +43,12 @@ const sectionMeta: Record<NavKey, { parent?: string; label: string }> = {
   promotions: { parent: 'Administrator', label: 'Promotions' },
   roles: { parent: 'Administrator', label: 'Roles' },
   departments: { label: 'Departments' },
-  payments: { parent: 'Payments', label: 'Transactions' },
+  'payments-cy': { parent: 'Payments', label: 'Transactions CY' },
+  'payments-ca': { parent: 'Payments', label: 'Transactions CA' },
+  'payments-cis': { parent: 'Payments', label: 'Transactions CIS' },
+  'payments-hk': { parent: 'Payments', label: 'Transactions HK' },
+  'payment-methods': { parent: 'Payments', label: 'Payment methods' },
+  regions: { parent: 'Payments', label: 'Regions' },
   csp: { label: 'CSP' },
   accounts: { label: 'Payment accounts' },
   contracts: { label: 'Contracts' },
@@ -499,7 +504,12 @@ function hashToNav(hash: string): NavKey {
     value === 'promotions' ||
     value === 'roles' ||
     value === 'departments' ||
-    value === 'payments' ||
+    value === 'payments-cy' ||
+    value === 'payments-ca' ||
+    value === 'payments-cis' ||
+    value === 'payments-hk' ||
+    value === 'payment-methods' ||
+    value === 'regions' ||
     value === 'csp' ||
     value === 'accounts' ||
     value === 'contracts' ||
@@ -543,8 +553,14 @@ export default function App() {
       <PromotionsPage modal={promoModal} onModalChange={setPromoModal} />
     ) : section === 'agents' ? (
       <AgentsPage />
-    ) : section === 'payments' ? (
-      <TransactionsPage />
+    ) : section === 'payments-cy' ? (
+      <TransactionsPage region="CY" />
+    ) : section === 'payments-ca' ? (
+      <TransactionsPage region="CA" />
+    ) : section === 'payments-cis' ? (
+      <TransactionsPage region="CIS" />
+    ) : section === 'payments-hk' ? (
+      <TransactionsPage region="HK" />
     ) : section === 'notifications' ? (
       <NotificationsPage modal={notifModal} onModalChange={setNotifModal} />
     ) : (
