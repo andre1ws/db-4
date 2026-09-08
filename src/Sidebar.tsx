@@ -70,13 +70,13 @@ function SubNavGroup({
   onNavigate: (key: NavKey) => void
 }) {
   return (
-    <div className="ml-3.5 flex flex-col gap-1 border-l border-nav-line pl-2.5">
+    <div className="ml-3.5 flex flex-col gap-1.5 border-l border-nav-line pl-2.5">
       {items.map((item) => (
         <button
           key={item.key}
           type="button"
           onClick={() => onNavigate(item.key)}
-          className={`flex items-center gap-2 rounded-xl px-2.5 py-1 text-left transition ${
+          className={`flex items-center gap-2 rounded-xl px-2.5 py-2 text-left transition ${
             active === item.key
               ? 'bg-white/10 font-medium text-white'
               : 'text-nav-muted hover:bg-nav-hover hover:text-nav-text'
