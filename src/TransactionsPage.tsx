@@ -5,22 +5,28 @@ import {
   CircleHelp,
   Download,
   Inbox,
-  ListFilter,
   Loader2,
   Rocket,
   Search,
   UserRound,
 } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
+import FilterPanel from './FilterPanel'
+import type { FilterPreset, FilterRule } from './filters'
 import {
   REGION_STATS,
   TRANSACTIONS_PAGE_SIZE,
+  TRANSACTION_FILTER_FIELDS,
+  matchesTransactionFilters,
   transactions,
   type MethodTone,
   type Transaction,
+  type TransactionFilterField,
   type TransactionRegion,
   type TransactionStatus,
 } from './transactions'
+
+const PRESETS_STORAGE_KEY_PREFIX = 'transactions-filter-presets-'
 
 const statusStyles: Record<TransactionStatus, string> = {
   New: 'bg-[#fff4dc] text-[#a16207]',
@@ -69,15 +75,49 @@ function currency(amount: number) {
 export default function TransactionsPage({ region }: { region: TransactionRegion }) {
   const [query, setQuery] = useState('')
   const [visibleCount, setVisibleCount] = useState(TRANSACTIONS_PAGE_SIZE)
+  const [filterRules, setFilterRules] = useState<FilterRule<TransactionFilterField>[]>([])
+  const [presets, setPresets] = useState<FilterPreset<TransactionFilterField>[]>(() => {
+    try {
+      const raw = localStorage.getItem(PRESETS_STORAGE_KEY_PREFIX + region)
+      return raw ? JSON.parse(raw) : []
+    } catch {
+      return []
+    }
+  })
   const sentinelRef = useRef<HTMLDivElement | null>(null)
   const stats = REGION_STATS[region]
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(PRESETS_STORAGE_KEY_PREFIX + region, JSON.stringify(presets))
+    } catch {
+      return
+    }
+  }, [presets, region])
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase()
     return transactions.filter(
-      (item) => item.region === region && (!normalized || item.user.toLowerCase().includes(normalized)),
+      (item) =>
+        item.region === region &&
+        (!normalized || item.user.toLowerCase().includes(normalized)) &&
+        matchesTransactionFilters(item, filterRules),
     )
-  }, [query, region])
+  }, [query, region, filterRules])
+
+  function savePreset(name: string, rules: FilterRule<TransactionFilterField>[]) {
+    setPresets((prev) => {
+      const existing = prev.find((preset) => preset.name === name)
+      if (existing) {
+        return prev.map((preset) => (preset.name === name ? { ...preset, rules } : preset))
+      }
+      return [...prev, { id: crypto.randomUUID(), name, rules }]
+    })
+  }
+
+  function deletePreset(id: string) {
+    setPresets((prev) => prev.filter((preset) => preset.id !== id))
+  }
 
   const total = useMemo(() => filtered.reduce((sum, item) => sum + item.amount, 0), [filtered])
 
@@ -103,7 +143,7 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
   return (
     <main className="pl-2 pr-4 py-3">
       <section className="rounded-2xl bg-white p-4 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
-        <div className="mb-2.5 flex flex-wrap items-center gap-2">
+        <div className="relative mb-2.5 flex flex-wrap items-center gap-2">
           <label className="relative w-full min-w-[240px] sm:w-[36%]">
             <Search
               size={16}
@@ -119,13 +159,17 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
               className="h-9 w-full rounded-full border border-line bg-input pl-10 pr-4 text-[13.5px] outline-none placeholder:text-placeholder focus:border-line-focus"
             />
           </label>
-          <button
-            type="button"
-            className="grid h-9 w-9 place-items-center rounded-xl border border-line bg-white"
-            aria-label="More filters"
-          >
-            <ListFilter size={16} />
-          </button>
+          <FilterPanel
+            fields={TRANSACTION_FILTER_FIELDS}
+            rules={filterRules}
+            onApply={(rules) => {
+              setFilterRules(rules)
+              setVisibleCount(TRANSACTIONS_PAGE_SIZE)
+            }}
+            presets={presets}
+            onSavePreset={savePreset}
+            onDeletePreset={deletePreset}
+          />
 
           <div className="ml-auto flex flex-wrap items-center gap-4">
             <button

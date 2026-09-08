@@ -1,3 +1,5 @@
+import { matchesFilters, type FilterFieldConfig, type FilterRule } from './filters'
+
 export type TransactionStatus = 'New' | 'In processing' | 'In processing (auto)' | 'Confirmed'
 export type MethodTone = 'crypto' | 'transfer' | 'plain'
 export type TransactionRegion = 'CY' | 'CA' | 'CIS' | 'HK'
@@ -49,3 +51,35 @@ export const transactions: Transaction[] = [
   { id: 'TRX0020', user: 'Timofey Gundak', status: 'Confirmed', expresses: false, createdDate: '28 Aug 2026', updatedDate: '28 Aug 2026', method: 'Tether TRC20 – USDT', methodTone: 'plain', amount: 918.94, region: 'HK' },
   { id: 'TRX0021', user: 'Lizzy Gold Onuwaje', status: 'Confirmed', expresses: false, createdDate: '28 Aug 2026', updatedDate: '28 Aug 2026', method: 'Tether TRC20 – USDT', methodTone: 'crypto', amount: 1081, region: 'CY' },
 ]
+
+export type TransactionFilterField = 'status' | 'expresses' | 'methodTone'
+
+export const TRANSACTION_FILTER_FIELDS: FilterFieldConfig<TransactionFilterField>[] = [
+  { key: 'status', label: 'Status', options: ['New', 'In processing', 'In processing (auto)', 'Confirmed'] },
+  { key: 'expresses', label: 'Expresses', options: ['Yes', 'No'] },
+  { key: 'methodTone', label: 'Method type', options: ['Crypto', 'Bank transfer', 'Other'] },
+]
+
+function methodToneLabel(tone: MethodTone): string {
+  if (tone === 'crypto') return 'Crypto'
+  if (tone === 'transfer') return 'Bank transfer'
+  return 'Other'
+}
+
+function transactionFieldValue(item: Transaction, field: TransactionFilterField): string | undefined {
+  switch (field) {
+    case 'status':
+      return item.status
+    case 'expresses':
+      return item.expresses ? 'Yes' : 'No'
+    case 'methodTone':
+      return methodToneLabel(item.methodTone)
+  }
+}
+
+export function matchesTransactionFilters(
+  item: Transaction,
+  rules: FilterRule<TransactionFilterField>[],
+): boolean {
+  return matchesFilters(item, rules, transactionFieldValue)
+}

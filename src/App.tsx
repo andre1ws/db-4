@@ -554,13 +554,13 @@ export default function App() {
     ) : section === 'agents' ? (
       <AgentsPage />
     ) : section === 'payments-cy' ? (
-      <TransactionsPage region="CY" />
+      <TransactionsPage key="CY" region="CY" />
     ) : section === 'payments-ca' ? (
-      <TransactionsPage region="CA" />
+      <TransactionsPage key="CA" region="CA" />
     ) : section === 'payments-cis' ? (
-      <TransactionsPage region="CIS" />
+      <TransactionsPage key="CIS" region="CIS" />
     ) : section === 'payments-hk' ? (
-      <TransactionsPage region="HK" />
+      <TransactionsPage key="HK" region="HK" />
     ) : section === 'notifications' ? (
       <NotificationsPage modal={notifModal} onModalChange={setNotifModal} />
     ) : (

@@ -1,12 +1,6 @@
 import { ChevronDown, ListFilter, Plus, Trash2, X } from 'lucide-react'
 import { useEffect, useRef, useState, type ReactNode } from 'react'
-import {
-  FILTER_FIELDS,
-  type FilterCondition,
-  type FilterField,
-  type FilterPreset,
-  type FilterRule,
-} from './users'
+import type { FilterCondition, FilterFieldConfig, FilterPreset, FilterRule } from './filters'
 
 const VISIBLE_PRESETS = 2
 
@@ -14,14 +8,6 @@ const conditionLabel: Record<FilterCondition, string> = {
   empty: 'Empty',
   is: 'It is',
   isNot: 'It is not',
-}
-
-function fieldLabel(field: FilterField) {
-  return FILTER_FIELDS.find((item) => item.key === field)?.label ?? field
-}
-
-function ruleLabel(rule: FilterRule) {
-  return `${fieldLabel(rule.field)}${rule.value ? `: ${rule.value}` : ''}`
 }
 
 function SelectField({
@@ -56,7 +42,7 @@ function PresetChip({
   onApply,
   onDelete,
 }: {
-  preset: FilterPreset
+  preset: FilterPreset<string>
   active: boolean
   onApply: () => void
   onDelete: () => void
@@ -82,28 +68,38 @@ function PresetChip({
   )
 }
 
-export default function UsersFilterPanel({
+export default function FilterPanel<F extends string>({
+  fields,
   rules,
   onApply,
   presets,
   onSavePreset,
   onDeletePreset,
 }: {
-  rules: FilterRule[]
-  onApply: (rules: FilterRule[]) => void
-  presets: FilterPreset[]
-  onSavePreset: (name: string, rules: FilterRule[]) => void
+  fields: FilterFieldConfig<F>[]
+  rules: FilterRule<F>[]
+  onApply: (rules: FilterRule<F>[]) => void
+  presets: FilterPreset<F>[]
+  onSavePreset: (name: string, rules: FilterRule<F>[]) => void
   onDeletePreset: (id: string) => void
 }) {
   const [open, setOpen] = useState(false)
   const [showMorePresets, setShowMorePresets] = useState(false)
-  const [draft, setDraft] = useState<FilterRule[]>(rules)
-  const [field, setField] = useState<FilterField>(FILTER_FIELDS[0].key)
+  const [draft, setDraft] = useState<FilterRule<F>[]>(rules)
+  const [field, setField] = useState<F>(fields[0].key)
   const [condition, setCondition] = useState<FilterCondition>('is')
   const [value, setValue] = useState('')
   const [presetName, setPresetName] = useState('')
   const [editingPresetId, setEditingPresetId] = useState<string | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
+
+  function fieldLabel(key: F) {
+    return fields.find((item) => item.key === key)?.label ?? key
+  }
+
+  function ruleLabel(rule: FilterRule<F>) {
+    return `${fieldLabel(rule.field)}${rule.value ? `: ${rule.value}` : ''}`
+  }
 
   useEffect(() => {
     if (!open && !showMorePresets) return
@@ -127,7 +123,7 @@ export default function UsersFilterPanel({
     }
   }, [open, showMorePresets])
 
-  const options = FILTER_FIELDS.find((item) => item.key === field)?.options ?? []
+  const options = fields.find((item) => item.key === field)?.options ?? []
   const visiblePresets = presets.slice(0, VISIBLE_PRESETS)
   const overflowPresets = presets.slice(VISIBLE_PRESETS)
 
@@ -180,7 +176,7 @@ export default function UsersFilterPanel({
     if (editingPresetId === id) onApply([])
   }
 
-  function applyPreset(preset: FilterPreset) {
+  function applyPreset(preset: FilterPreset<F>) {
     setDraft(preset.rules)
     setEditingPresetId(preset.id)
     onApply(preset.rules)
@@ -216,11 +212,11 @@ export default function UsersFilterPanel({
                 <SelectField
                   value={field}
                   onChange={(next) => {
-                    setField(next as FilterField)
+                    setField(next as F)
                     setValue('')
                   }}
                 >
-                  {FILTER_FIELDS.map((item) => (
+                  {fields.map((item) => (
                     <option key={item.key} value={item.key}>
                       {item.label}
                     </option>

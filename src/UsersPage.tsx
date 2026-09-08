@@ -8,9 +8,10 @@ import {
   UserRound,
 } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
+import FilterPanel from './FilterPanel'
 import UserCard from './UserCard'
-import UsersFilterPanel from './UsersFilterPanel'
 import {
+  FILTER_FIELDS,
   USERS_PAGE_SIZE,
   matchesFilters,
   users,
@@ -189,7 +190,8 @@ export default function UsersPage() {
               className="h-9 w-full rounded-full border border-line bg-input pl-10 pr-4 text-[13.5px] outline-none placeholder:text-placeholder focus:border-line-focus"
             />
           </label>
-          <UsersFilterPanel
+          <FilterPanel
+            fields={FILTER_FIELDS}
             rules={filterRules}
             onApply={applyFilters}
             presets={presets}

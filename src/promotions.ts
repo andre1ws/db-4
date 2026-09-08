@@ -1,3 +1,5 @@
+import { matchesFilters, uniqueValues, type FilterFieldConfig, type FilterRule } from './filters'
+
 export type PromotionSegment = 'Users' | 'CSP'
 
 export type Promotion = {
@@ -220,3 +222,23 @@ export const promotions: Promotion[] = [
     buttonText: 'Start tour',
   },
 ]
+
+export type PromotionFilterField = 'segment' | 'countries'
+
+export const PROMOTION_FILTER_FIELDS: FilterFieldConfig<PromotionFilterField>[] = [
+  { key: 'segment', label: 'Segment', options: ['Users', 'CSP'] },
+  { key: 'countries', label: 'Countries', options: uniqueValues(promotions.map((item) => item.countries)) },
+]
+
+function promotionFieldValue(item: Promotion, field: PromotionFilterField): string | undefined {
+  switch (field) {
+    case 'segment':
+      return item.segment
+    case 'countries':
+      return item.countries
+  }
+}
+
+export function matchesPromotionFilters(item: Promotion, rules: FilterRule<PromotionFilterField>[]): boolean {
+  return matchesFilters(item, rules, promotionFieldValue)
+}

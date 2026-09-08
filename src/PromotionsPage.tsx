@@ -1,11 +1,20 @@
 import {
   Archive,
-  ListFilter,
   Search,
 } from 'lucide-react'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import FilterPanel from './FilterPanel'
 import PromotionModal from './PromotionModal'
-import { promotions, type Promotion } from './promotions'
+import {
+  PROMOTION_FILTER_FIELDS,
+  matchesPromotionFilters,
+  promotions,
+  type Promotion,
+  type PromotionFilterField,
+} from './promotions'
+import type { FilterPreset, FilterRule } from './filters'
+
+const PRESETS_STORAGE_KEY = 'promotions-filter-presets'
 
 function Pill({ children }: { children: string }) {
   return (
@@ -23,22 +32,54 @@ export default function PromotionsPage({
   onModalChange: (modal: Promotion | 'new' | null) => void
 }) {
   const [query, setQuery] = useState('')
+  const [filterRules, setFilterRules] = useState<FilterRule<PromotionFilterField>[]>([])
+  const [presets, setPresets] = useState<FilterPreset<PromotionFilterField>[]>(() => {
+    try {
+      const raw = localStorage.getItem(PRESETS_STORAGE_KEY)
+      return raw ? JSON.parse(raw) : []
+    } catch {
+      return []
+    }
+  })
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(PRESETS_STORAGE_KEY, JSON.stringify(presets))
+    } catch {
+      return
+    }
+  }, [presets])
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase()
     return promotions.filter(
       (item) =>
-        !normalized ||
-        item.name.toLowerCase().includes(normalized) ||
-        item.segment.toLowerCase().includes(normalized) ||
-        item.countries.toLowerCase().includes(normalized),
+        (!normalized ||
+          item.name.toLowerCase().includes(normalized) ||
+          item.segment.toLowerCase().includes(normalized) ||
+          item.countries.toLowerCase().includes(normalized)) &&
+        matchesPromotionFilters(item, filterRules),
     )
-  }, [query])
+  }, [query, filterRules])
+
+  function savePreset(name: string, rules: FilterRule<PromotionFilterField>[]) {
+    setPresets((prev) => {
+      const existing = prev.find((preset) => preset.name === name)
+      if (existing) {
+        return prev.map((preset) => (preset.name === name ? { ...preset, rules } : preset))
+      }
+      return [...prev, { id: crypto.randomUUID(), name, rules }]
+    })
+  }
+
+  function deletePreset(id: string) {
+    setPresets((prev) => prev.filter((preset) => preset.id !== id))
+  }
 
   return (
     <main className="pl-2 pr-4 py-3">
       <section className="rounded-2xl bg-white p-4 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
-        <div className="mb-2.5 flex flex-wrap items-center gap-2">
+        <div className="relative mb-2.5 flex flex-wrap items-center gap-2">
           <label className="relative w-full min-w-[220px] sm:w-[35%]">
             <Search
               size={16}
@@ -51,13 +92,14 @@ export default function PromotionsPage({
               className="h-9 w-full rounded-full border border-line bg-input pl-10 pr-4 text-[13.5px] outline-none placeholder:text-placeholder focus:border-line-focus"
             />
           </label>
-          <button
-            type="button"
-            className="grid h-9 w-9 place-items-center rounded-xl border border-line bg-white"
-            aria-label="More filters"
-          >
-            <ListFilter size={16} />
-          </button>
+          <FilterPanel
+            fields={PROMOTION_FILTER_FIELDS}
+            rules={filterRules}
+            onApply={setFilterRules}
+            presets={presets}
+            onSavePreset={savePreset}
+            onDeletePreset={deletePreset}
+          />
           <button
             type="button"
             className="ml-auto inline-flex h-9 items-center gap-2 rounded-full border border-line-strong bg-white px-3.5 text-[13px] font-medium"

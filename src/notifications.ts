@@ -1,3 +1,5 @@
+import { matchesFilters, type FilterFieldConfig, type FilterRule } from './filters'
+
 export type NotificationSegment = 'Users' | 'CSP'
 
 export type Notification = {
@@ -178,3 +180,26 @@ export const notifications: Notification[] = [
     sentDate: '05 May 2026',
   },
 ]
+
+export type NotificationFilterField = 'segment' | 'push'
+
+export const NOTIFICATION_FILTER_FIELDS: FilterFieldConfig<NotificationFilterField>[] = [
+  { key: 'segment', label: 'Segment', options: ['Users', 'CSP'] },
+  { key: 'push', label: 'Push sent', options: ['Yes', 'No'] },
+]
+
+function notificationFieldValue(item: Notification, field: NotificationFilterField): string | undefined {
+  switch (field) {
+    case 'segment':
+      return item.segment
+    case 'push':
+      return item.pushSent ? 'Yes' : 'No'
+  }
+}
+
+export function matchesNotificationFilters(
+  item: Notification,
+  rules: FilterRule<NotificationFilterField>[],
+): boolean {
+  return matchesFilters(item, rules, notificationFieldValue)
+}
