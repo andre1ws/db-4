@@ -107,7 +107,7 @@ export default function Sidebar({
   const isPayments = paymentItems.some((item) => item.key === active)
 
   return (
-    <aside className="sticky top-0 flex h-svh w-[224px] shrink-0 flex-col py-3 pl-3 pr-1.5">
+    <aside className="sticky top-0 flex h-svh w-[224px] shrink-0 flex-col py-2.5 pl-2.5 pr-1.5">
       <div className="flex h-full flex-col rounded-2xl bg-nav-bg p-3 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
         <div className="mb-4 flex items-center gap-2 px-1.5 pt-1">
           <div className="grid h-9 w-9 place-items-center rounded-xl bg-brand text-white">

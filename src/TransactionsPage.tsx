@@ -101,9 +101,9 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
   }, [hasMore, filtered.length])
 
   return (
-    <main className="pl-2 pr-4 py-4">
-      <section className="rounded-2xl bg-white p-5 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
-        <div className="mb-3 flex flex-wrap items-center gap-2">
+    <main className="pl-2 pr-4 py-3">
+      <section className="rounded-2xl bg-white p-4 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
+        <div className="mb-2.5 flex flex-wrap items-center gap-2">
           <label className="relative w-full min-w-[240px] sm:w-[36%]">
             <Search
               size={16}

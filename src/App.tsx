@@ -99,8 +99,8 @@ function Header({
   onCreate?: () => void
 }) {
   return (
-    <header className="sticky top-0 z-20 pl-2 pr-4 pt-3">
-      <div className="flex h-14 items-center justify-between rounded-2xl bg-white px-4 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
+    <header className="sticky top-0 z-20 pl-2 pr-4 pt-2.5">
+      <div className="flex h-12 items-center justify-between rounded-2xl bg-white px-4 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
             {breadcrumb.parent ? (
@@ -326,8 +326,8 @@ function AgentsPage() {
   }
 
   return (
-    <main className="pl-2 pr-4 py-4">
-        <section className="rounded-2xl bg-white p-5 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
+    <main className="pl-2 pr-4 py-3">
+        <section className="rounded-2xl bg-white p-4 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
           <div className="mb-3 flex flex-wrap items-center gap-2">
             <label className="relative w-full min-w-[220px] sm:w-[38%]">
               <Search
@@ -487,7 +487,7 @@ function AgentsPage() {
 
 function PlaceholderPage() {
   return (
-    <main className="pl-2 pr-4 py-4">
+    <main className="pl-2 pr-4 py-3">
       <section className="rounded-2xl bg-white p-7 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
         <p className="text-[13px] text-muted">This section is ready for content.</p>
       </section>
@@ -583,7 +583,7 @@ export default function App() {
                 : undefined
           }
         />
-        <div className="pt-1">{page}</div>
+        <div className="pt-0.5">{page}</div>
       </div>
     </div>
   )
