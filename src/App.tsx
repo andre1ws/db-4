@@ -99,7 +99,7 @@ function Header({
   onCreate?: () => void
 }) {
   return (
-    <header className="sticky top-0 z-20 pl-2 pr-4 pt-2.5">
+    <header className="z-20 shrink-0 pl-2 pr-4 pt-2.5">
       <div className="flex h-12 items-center justify-between rounded-2xl bg-white px-4 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
@@ -326,9 +326,9 @@ function AgentsPage() {
   }
 
   return (
-    <main className="pl-2 pr-4 py-3">
-        <section className="rounded-2xl bg-white p-4 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
-          <div className="mb-3 flex flex-wrap items-center gap-2">
+    <main className="flex h-full min-h-0 flex-col pl-2 pr-4 py-3">
+        <section className="flex min-h-0 flex-1 flex-col rounded-2xl bg-white p-4 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
+          <div className="mb-3 flex shrink-0 flex-wrap items-center gap-2">
             <label className="relative w-full min-w-[220px] sm:w-[38%]">
               <Search
                 size={16}
@@ -382,7 +382,7 @@ function AgentsPage() {
             </button>
           </div>
 
-          <div className="overflow-x-auto">
+          <div className="min-h-0 flex-1 overflow-auto">
             <table className="w-full min-w-[920px] table-fixed border-collapse text-left">
               <colgroup>
                 <col className="w-[28%]" />
@@ -395,13 +395,13 @@ function AgentsPage() {
               </colgroup>
               <thead>
                 <tr className="bg-chip text-[12.5px] font-medium text-body">
-                  <th className="rounded-l-xl px-3 py-1.5">Name :</th>
-                  <th className="px-2 py-1.5">Last Update :</th>
-                  <th className="px-2 py-1.5">Type :</th>
-                  <th className="px-2 py-1.5">Runs :</th>
-                  <th className="px-2 py-1.5">Rating :</th>
-                  <th className="px-2 py-1.5">Status :</th>
-                  <th className="rounded-r-xl px-3 py-1.5 text-right">Actions :</th>
+                  <th className="sticky top-0 z-10 rounded-l-xl bg-chip px-3 py-1.5">Name :</th>
+                  <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">Last Update :</th>
+                  <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">Type :</th>
+                  <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">Runs :</th>
+                  <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">Rating :</th>
+                  <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">Status :</th>
+                  <th className="sticky top-0 z-10 rounded-r-xl bg-chip px-3 py-1.5 text-right">Actions :</th>
                 </tr>
               </thead>
               <tbody>
@@ -419,7 +419,7 @@ function AgentsPage() {
             </table>
           </div>
 
-          <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
+          <div className="mt-3 flex shrink-0 flex-wrap items-center justify-between gap-3">
             <p className="text-[13px] text-muted">
               Showing {from} to {to} of {filtered.length} agents.
             </p>
@@ -460,7 +460,7 @@ function AgentsPage() {
           </div>
         </section>
 
-        <section className="mt-3 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-blush px-5 py-4">
+        <section className="mt-3 flex shrink-0 flex-wrap items-center justify-between gap-4 rounded-2xl bg-blush px-5 py-4">
           <div className="flex items-center gap-3">
             <div className="grid h-10 w-10 place-items-center rounded-full bg-white text-[#d4a017] shadow-sm">
               <Crown size={20} fill="currentColor" />
@@ -570,9 +570,9 @@ export default function App() {
   const breadcrumb = sectionMeta[section]
 
   return (
-    <div className="flex min-h-svh bg-page text-ink">
+    <div className="flex h-svh overflow-hidden bg-page text-ink">
       <Sidebar active={section} onNavigate={changeSection} />
-      <div className="min-w-0 flex-1">
+      <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
         <Header
           breadcrumb={breadcrumb}
           onCreate={
@@ -583,7 +583,7 @@ export default function App() {
                 : undefined
           }
         />
-        <div className="pt-0.5">{page}</div>
+        <div className="min-h-0 flex-1 overflow-hidden pt-0.5">{page}</div>
       </div>
     </div>
   )

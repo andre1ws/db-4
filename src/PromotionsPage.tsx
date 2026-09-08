@@ -77,9 +77,9 @@ export default function PromotionsPage({
   }
 
   return (
-    <main className="pl-2 pr-4 py-3">
-      <section className="rounded-2xl bg-white p-4 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
-        <div className="relative mb-2.5 flex flex-wrap items-center gap-2">
+    <main className="flex h-full min-h-0 flex-col pl-2 pr-4 py-3">
+      <section className="flex min-h-0 flex-1 flex-col rounded-2xl bg-white p-4 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
+        <div className="relative mb-2.5 flex shrink-0 flex-wrap items-center gap-2">
           <label className="relative w-full min-w-[220px] sm:w-[35%]">
             <Search
               size={16}
@@ -109,7 +109,7 @@ export default function PromotionsPage({
           </button>
         </div>
 
-        <div className="overflow-x-auto">
+        <div className="min-h-0 flex-1 overflow-auto">
           <table className="w-full min-w-[980px] table-fixed border-collapse text-left">
             <colgroup>
               <col className="w-[26%]" />
@@ -121,7 +121,7 @@ export default function PromotionsPage({
             </colgroup>
             <thead>
               <tr className="bg-chip text-[12.5px] font-medium text-body">
-                <th className="rounded-l-xl px-3 py-1.5">
+                <th className="sticky top-0 z-10 rounded-l-xl bg-chip px-3 py-1.5">
                   <div className="flex items-center gap-2">
                     Banner name
                     <span className="rounded-full bg-white/70 px-2 py-0.5 text-[10.5px] text-muted">
@@ -129,11 +129,11 @@ export default function PromotionsPage({
                     </span>
                   </div>
                 </th>
-                <th className="px-2 py-1.5">Segment</th>
-                <th className="px-2 py-1.5">Countries</th>
-                <th className="px-2 py-1.5">Button leads to</th>
-                <th className="px-2 py-1.5">End date</th>
-                <th className="rounded-r-xl px-3 py-1.5">Date of last update</th>
+                <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">Segment</th>
+                <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">Countries</th>
+                <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">Button leads to</th>
+                <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">End date</th>
+                <th className="sticky top-0 z-10 rounded-r-xl bg-chip px-3 py-1.5">Date of last update</th>
               </tr>
             </thead>
             <tbody>

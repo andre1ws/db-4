@@ -141,9 +141,9 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
   }, [hasMore, filtered.length])
 
   return (
-    <main className="pl-2 pr-4 py-3">
-      <section className="rounded-2xl bg-white p-4 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
-        <div className="relative mb-2.5 flex flex-wrap items-center gap-2">
+    <main className="flex h-full min-h-0 flex-col pl-2 pr-4 py-3">
+      <section className="flex min-h-0 flex-1 flex-col rounded-2xl bg-white p-4 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
+        <div className="relative mb-2.5 flex shrink-0 flex-wrap items-center gap-2">
           <label className="relative w-full min-w-[240px] sm:w-[36%]">
             <Search
               size={16}
@@ -212,7 +212,7 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
           </div>
         </div>
 
-        <div className="overflow-x-auto">
+        <div className="min-h-0 flex-1 overflow-auto">
           <table className="w-full min-w-[1080px] table-fixed border-collapse text-left">
             <colgroup>
               <col className="w-[22%]" />
@@ -225,7 +225,7 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
             </colgroup>
             <thead>
               <tr className="bg-chip text-[12.5px] font-medium text-body">
-                <th className="rounded-l-xl px-3 py-1.5">
+                <th className="sticky top-0 z-10 rounded-l-xl bg-chip px-3 py-1.5">
                   <div className="flex items-center gap-2">
                     User
                     <span className="rounded-full bg-white/70 px-2 py-0.5 text-[10.5px] text-muted">
@@ -233,32 +233,32 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
                     </span>
                   </div>
                 </th>
-                <th className="px-2 py-1.5">Status</th>
-                <th className="px-2 py-1.5">
+                <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">Status</th>
+                <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">
                   <div className="flex items-center gap-1">
                     Expresses
                     <CircleHelp size={13} className="text-muted" />
                   </div>
                 </th>
-                <th className="px-2 py-1.5">
+                <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">
                   <div className="flex items-center gap-1">
                     Date of creation
                     <ArrowDown size={13} />
                   </div>
                 </th>
-                <th className="px-2 py-1.5">
+                <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">
                   <div className="flex items-center gap-1">
                     Updated at
                     <ArrowUpDown size={13} className="text-muted" />
                   </div>
                 </th>
-                <th className="px-2 py-1.5">
+                <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">
                   <div className="flex items-center gap-1">
                     Payment method
                     <CircleHelp size={13} className="text-muted" />
                   </div>
                 </th>
-                <th className="rounded-r-xl px-3 py-1.5 text-right">Amount</th>
+                <th className="sticky top-0 z-10 rounded-r-xl bg-chip px-3 py-1.5 text-right">Amount</th>
               </tr>
             </thead>
             <tbody>
@@ -298,21 +298,21 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
               ) : null}
             </tbody>
           </table>
+
+          <div className="flex flex-col items-center gap-2 py-3">
+            <p className="text-[13px] text-muted">
+              Showing {visible.length} of {filtered.length} transactions.
+            </p>
+            {hasMore ? (
+              <div ref={sentinelRef} className="flex items-center gap-1.5 py-1 text-[12.5px] text-muted">
+                <Loader2 size={14} className="animate-spin" />
+                Loading more...
+              </div>
+            ) : null}
+          </div>
         </div>
 
-        <div className="mt-3 flex flex-col items-center gap-2 border-t border-line pt-3">
-          <p className="text-[13px] text-muted">
-            Showing {visible.length} of {filtered.length} transactions.
-          </p>
-          {hasMore ? (
-            <div ref={sentinelRef} className="flex items-center gap-1.5 py-1 text-[12.5px] text-muted">
-              <Loader2 size={14} className="animate-spin" />
-              Loading more...
-            </div>
-          ) : null}
-        </div>
-
-        <div className="mt-3 flex items-center justify-between rounded-xl bg-chip px-4 py-3">
+        <div className="mt-3 flex shrink-0 items-center justify-between rounded-xl bg-chip px-4 py-3">
           <span className="text-[13px] font-medium text-body">Total</span>
           <span className="text-[15px] font-semibold tabular-nums">{currency(total)}</span>
         </div>
