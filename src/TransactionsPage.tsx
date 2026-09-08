@@ -171,30 +171,36 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
             onDeletePreset={deletePreset}
           />
 
-          <div className="ml-auto flex flex-wrap items-center gap-4">
+          <div className="ml-auto flex flex-wrap items-center gap-2">
             <button
               type="button"
-              className="flex items-center gap-1.5 text-[13px] font-medium text-muted hover:text-ink"
+              className="inline-flex h-9 items-center gap-1.5 rounded-full border border-line-strong bg-white px-3.5 text-[13px] font-medium text-ink hover:bg-hover"
             >
               <Rocket size={15} />
               Quick Transfer
-              <span className="font-medium text-ink">{stats.quickTransfer}</span>
+              <span className="grid h-5 min-w-5 place-items-center rounded-full bg-chip px-1 text-[11px] text-body">
+                {stats.quickTransfer}
+              </span>
             </button>
             <button
               type="button"
-              className="flex items-center gap-1.5 text-[13px] font-medium text-body hover:text-ink"
+              className="inline-flex h-9 items-center gap-1.5 rounded-full border border-line-strong bg-white px-3.5 text-[13px] font-medium text-ink hover:bg-hover"
             >
               <AlertTriangle size={15} />
               Require clarification
-              <span className="font-medium text-ink">{stats.requireClarification}</span>
+              <span className="grid h-5 min-w-5 place-items-center rounded-full bg-chip px-1 text-[11px] text-body">
+                {stats.requireClarification}
+              </span>
             </button>
             <button
               type="button"
-              className="flex items-center gap-1.5 text-[13px] font-medium text-ink"
+              className="inline-flex h-9 items-center gap-1.5 rounded-full border border-line-strong bg-white px-3.5 text-[13px] font-medium text-ink hover:bg-hover"
             >
               <Inbox size={15} />
               New
-              <span>{stats.new}</span>
+              <span className="grid h-5 min-w-5 place-items-center rounded-full bg-chip px-1 text-[11px] text-body">
+                {stats.new}
+              </span>
             </button>
             <button
               type="button"

@@ -198,10 +198,10 @@ export default function UsersPage() {
             onSavePreset={savePreset}
             onDeletePreset={deletePreset}
           />
-          <div className="ml-auto inline-flex h-9 items-center gap-2 rounded-full bg-brand-soft px-3.5 text-[12.5px] font-medium text-brand">
-            <ShieldCheck size={16} />
+          <div className="ml-auto inline-flex h-9 items-center gap-1.5 rounded-full border border-line-strong bg-white px-3.5 text-[13px] font-medium text-ink">
+            <ShieldCheck size={16} className="text-brand" />
             Checking KYC
-            <span className="grid h-5 min-w-5 place-items-center rounded-full bg-white px-1 text-[11px]">9</span>
+            <span className="grid h-5 min-w-5 place-items-center rounded-full bg-chip px-1 text-[11px] text-body">9</span>
           </div>
           <button
             type="button"
