@@ -123,11 +123,11 @@ export default function Sidebar({
           Sections
         </div>
 
-        <nav className="nav-scroll mt-2 flex flex-1 flex-col gap-1.5 overflow-y-auto text-[13px]">
+        <nav className="nav-scroll mt-2 flex flex-1 flex-col gap-1 overflow-y-auto text-[13px]">
           <button
             type="button"
             onClick={() => setAdminOpen((open) => !open)}
-            className={`flex w-full items-center gap-2.5 rounded-xl px-2.5 py-2 text-left transition hover:bg-nav-hover ${
+            className={`flex w-full items-center gap-2.5 rounded-xl px-2.5 py-1.5 text-left transition hover:bg-nav-hover ${
               isAdmin ? 'text-nav-text' : 'text-nav-muted'
             }`}
           >
@@ -154,7 +154,7 @@ export default function Sidebar({
           <button
             type="button"
             onClick={() => setPaymentsOpen((open) => !open)}
-            className={`flex w-full items-center gap-2.5 rounded-xl px-2.5 py-2 text-left transition hover:bg-nav-hover ${
+            className={`flex w-full items-center gap-2.5 rounded-xl px-2.5 py-1.5 text-left transition hover:bg-nav-hover ${
               isPayments ? 'text-nav-text' : 'text-nav-muted'
             }`}
           >
@@ -260,7 +260,7 @@ function NavItem({
     <button
       type="button"
       onClick={onClick}
-      className={`flex w-full items-center gap-2.5 rounded-xl px-2.5 py-2 text-left transition ${
+      className={`flex w-full items-center gap-2.5 rounded-xl px-2.5 py-1.5 text-left transition ${
         active
           ? 'bg-white/10 font-medium text-white'
           : 'text-nav-muted hover:bg-nav-hover hover:text-nav-text'
