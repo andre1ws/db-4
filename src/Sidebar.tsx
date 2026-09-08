@@ -76,7 +76,7 @@ function SubNavGroup({
           key={item.key}
           type="button"
           onClick={() => onNavigate(item.key)}
-          className={`flex items-center gap-2 rounded-xl px-2.5 py-1.5 text-left transition ${
+          className={`flex items-center gap-2 rounded-xl px-2.5 py-1 text-left transition ${
             active === item.key
               ? 'bg-white/10 font-medium text-white'
               : 'text-nav-muted hover:bg-nav-hover hover:text-nav-text'
@@ -123,15 +123,15 @@ export default function Sidebar({
           Sections
         </div>
 
-        <nav className="nav-scroll mt-2 flex flex-1 flex-col gap-1 overflow-y-auto text-[13.5px]">
+        <nav className="nav-scroll mt-2 flex flex-1 flex-col gap-1 overflow-y-auto text-[13px]">
           <button
             type="button"
             onClick={() => setAdminOpen((open) => !open)}
-            className={`flex w-full items-center gap-2.5 rounded-xl px-2.5 py-2 text-left transition hover:bg-nav-hover ${
+            className={`flex w-full items-center gap-2.5 rounded-xl px-2.5 py-1.5 text-left transition hover:bg-nav-hover ${
               isAdmin ? 'text-nav-text' : 'text-nav-muted'
             }`}
           >
-            <span className="grid h-7 w-7 place-items-center text-nav-icon">
+            <span className="grid h-6 w-6 place-items-center text-nav-icon">
               <UsersRound size={15} strokeWidth={1.75} />
             </span>
             <span className="min-w-0 flex-1 truncate font-medium">Administrator</span>
@@ -154,11 +154,11 @@ export default function Sidebar({
           <button
             type="button"
             onClick={() => setPaymentsOpen((open) => !open)}
-            className={`flex w-full items-center gap-2.5 rounded-xl px-2.5 py-2 text-left transition hover:bg-nav-hover ${
+            className={`flex w-full items-center gap-2.5 rounded-xl px-2.5 py-1.5 text-left transition hover:bg-nav-hover ${
               isPayments ? 'text-nav-text' : 'text-nav-muted'
             }`}
           >
-            <span className="grid h-7 w-7 place-items-center text-nav-icon">
+            <span className="grid h-6 w-6 place-items-center text-nav-icon">
               <CircleDollarSign size={16} strokeWidth={1.75} />
             </span>
             <span className="min-w-0 flex-1 truncate font-medium">Payments</span>
@@ -260,13 +260,13 @@ function NavItem({
     <button
       type="button"
       onClick={onClick}
-      className={`flex w-full items-center gap-2.5 rounded-xl px-2.5 py-2 text-left transition ${
+      className={`flex w-full items-center gap-2.5 rounded-xl px-2.5 py-1.5 text-left transition ${
         active
           ? 'bg-white/10 font-medium text-white'
           : 'text-nav-muted hover:bg-nav-hover hover:text-nav-text'
       }`}
     >
-      <span className="grid h-7 w-7 place-items-center text-nav-icon">{icon}</span>
+      <span className="grid h-6 w-6 place-items-center text-nav-icon">{icon}</span>
       <span className="min-w-0 flex-1 truncate">{label}</span>
       {badge ? <span className="h-2 w-2 rounded-full bg-private-dot" /> : null}
       {chevron ? <ChevronRight size={15} className="text-nav-muted" /> : null}
