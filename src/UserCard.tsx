@@ -236,7 +236,7 @@ export default function UserCard({
                 </div>
               </div>
 
-              <div className="border-t border-line pt-4">
+              <div>
                 <div className="mb-3 flex items-center justify-between gap-3">
                   <SectionLabel>Account details and settings</SectionLabel>
                   {user.twoFactor ? (
@@ -282,7 +282,7 @@ export default function UserCard({
                 </div>
               </div>
 
-              <div className="grid gap-3 border-t border-line pt-4 sm:grid-cols-2">
+              <div className="grid gap-3 sm:grid-cols-2">
                 <div className="rounded-xl border border-line px-4 py-3.5">
                   <div className="mb-1.5 flex items-center justify-between">
                     <h3 className="text-[13.5px] font-medium">Roles</h3>
