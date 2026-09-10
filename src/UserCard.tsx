@@ -170,7 +170,7 @@ export default function UserCard({
               {user.avatar ? (
                 <img src={user.avatar} alt="" className="h-12 w-12 rounded-xl object-cover" />
               ) : (
-                <div className="grid h-12 w-12 place-items-center rounded-xl bg-brand-tint text-brand">
+                <div className="grid h-12 w-12 place-items-center rounded-xl bg-brand text-white">
                   <UserRound size={22} />
                 </div>
               )}

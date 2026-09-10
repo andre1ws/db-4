@@ -57,7 +57,7 @@ function TransactionAvatar({ transaction }: { transaction: Transaction }) {
   }
 
   return (
-    <div className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-tint text-brand">
+    <div className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand text-white">
       <UserRound size={16} strokeWidth={2.2} />
     </div>
   )

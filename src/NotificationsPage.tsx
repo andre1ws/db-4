@@ -36,7 +36,7 @@ function SenderAvatar({ item }: { item: Notification }) {
   }
 
   return (
-    <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-tint text-brand">
+    <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand text-white">
       <UserRound size={16} strokeWidth={2.2} />
     </div>
   )
