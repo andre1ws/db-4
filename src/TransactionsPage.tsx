@@ -29,9 +29,9 @@ import {
 const PRESETS_STORAGE_KEY_PREFIX = 'transactions-filter-presets-'
 
 const statusStyles: Record<TransactionStatus, string> = {
-  New: 'bg-[#f2a33e] text-white',
-  'In processing': 'bg-brand text-white',
-  'In processing (auto)': 'bg-[#a3a3ab] text-white',
+  New: 'bg-[#eaa23c] text-white',
+  'In processing': 'bg-[#c9b8f7] text-white/70',
+  'In processing (auto)': 'bg-[#a8a8ad] text-white/70',
   Confirmed: 'bg-[#5cb85c] text-white',
 }
 
@@ -44,7 +44,7 @@ const methodStyles: Record<MethodTone, string> = {
 function StatusBadge({ status }: { status: TransactionStatus }) {
   return (
     <span
-      className={`inline-flex rounded-lg px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide ${statusStyles[status]}`}
+      className={`inline-flex rounded-full px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wide ${statusStyles[status]}`}
     >
       {status}
     </span>
