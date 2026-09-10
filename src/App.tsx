@@ -1,7 +1,7 @@
 import {
   BarChart3,
-  Bell,
   Bot,
+  Check,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
@@ -23,7 +23,6 @@ import {
   Settings2,
   Sparkles,
   Star,
-  Sun,
 } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { PAGE_SIZE, agents, type Agent, type AgentStatus } from './agents'
@@ -91,6 +90,61 @@ const iconTone = {
   cpu: 'bg-[#eeeef2] text-[#44445a]',
 }
 
+const LANGUAGES = ['EN', 'RU', 'ES', 'PT'] as const
+
+function LanguageSwitcher() {
+  const [open, setOpen] = useState(false)
+  const [lang, setLang] = useState<(typeof LANGUAGES)[number]>('EN')
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!open) return
+    function onPointerDown(event: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', onPointerDown)
+    return () => document.removeEventListener('mousedown', onPointerDown)
+  }, [open])
+
+  return (
+    <div className="relative" ref={containerRef}>
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        className="flex h-8 items-center gap-1 rounded-full px-2 text-[13px] font-medium text-body hover:bg-hover-strong"
+        aria-label="Change language"
+      >
+        <Globe size={16} />
+        {lang}
+        <ChevronDown size={13} className="text-muted" />
+      </button>
+
+      {open ? (
+        <div className="absolute right-0 top-full z-30 mt-2 w-28 rounded-xl border border-line bg-white p-1 shadow-[0_24px_60px_rgba(17,17,17,0.15)]">
+          {LANGUAGES.map((item) => (
+            <button
+              key={item}
+              type="button"
+              onClick={() => {
+                setLang(item)
+                setOpen(false)
+              }}
+              className={`flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 text-[13px] transition ${
+                item === lang ? 'bg-brand-soft font-medium text-brand' : 'text-body hover:bg-hover'
+              }`}
+            >
+              {item}
+              {item === lang ? <Check size={14} /> : null}
+            </button>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  )
+}
+
 function Header({
   breadcrumb,
   onCreate,
@@ -123,21 +177,7 @@ function Header({
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <button
-            type="button"
-            className="grid h-8 w-8 place-items-center rounded-full text-body hover:bg-hover-strong"
-            aria-label="Toggle theme"
-          >
-            <Sun size={16} />
-          </button>
-          <button
-            type="button"
-            className="relative grid h-8 w-8 place-items-center rounded-full text-body hover:bg-hover-strong"
-            aria-label="Notifications"
-          >
-            <Bell size={16} />
-            <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-[#ef4444] ring-2 ring-white" />
-          </button>
+          <LanguageSwitcher />
           <button type="button" className="flex items-center gap-1.5 pl-1">
             <img
               src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&h=80&q=80"
