@@ -8,7 +8,6 @@ import {
   FileText,
   Gift,
   Handshake,
-  LayoutDashboard,
   Monitor,
   Percent,
   PlaySquare,
@@ -114,13 +113,11 @@ export default function Sidebar({
     <aside className="sticky top-0 flex h-svh w-[224px] shrink-0 flex-col py-2.5 pl-2.5 pr-1.5">
       <div className="flex h-full flex-col rounded-2xl bg-nav-bg p-3 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
         <div className="mb-4 flex items-center gap-2 px-1.5 pt-1">
-          <div className="grid h-9 w-9 place-items-center rounded-xl bg-brand text-white">
-            <LayoutDashboard size={17} />
-          </div>
-          <div>
-            <div className="text-[14px] font-medium tracking-[-0.02em] text-white">Dashboard</div>
-            <div className="text-[11px] font-medium text-nav-muted">Control panel</div>
-          </div>
+          <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7 shrink-0" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="1" width="6" height="22" rx="3" transform="rotate(20 6 12)" fill="white" />
+            <rect x="12" y="7" width="6" height="16" rx="3" transform="rotate(20 15 15)" fill="white" />
+          </svg>
+          <span className="text-[16px] font-semibold tracking-[-0.02em] text-white">Dashboard</span>
         </div>
 
         <div className="px-2 text-[11px] font-medium uppercase tracking-[0.14em] text-nav-muted">
