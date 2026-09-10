@@ -229,8 +229,8 @@ export default function PartnersPage() {
                       </span>
                       <PartnerAvatar partner={item} />
                       <div className="min-w-0">
-                        <div className="truncate text-[13.5px] font-medium leading-tight">{item.name}</div>
-                        <div className="truncate text-[11.5px] leading-tight text-muted">{item.email}</div>
+                        <div className="truncate text-[13.5px] font-medium">{item.name}</div>
+                        <div className="truncate text-[11.5px] text-muted">{item.email}</div>
                       </div>
                     </div>
                   </td>

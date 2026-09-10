@@ -173,8 +173,8 @@ export default function NotificationsPage({
                     <div className="flex items-center gap-2.5">
                       <SenderAvatar item={item} />
                       <div className="min-w-0">
-                        <div className="truncate text-[13px] font-medium leading-tight">{item.sender}</div>
-                        <div className="truncate text-[11.5px] leading-tight text-muted">{item.senderEmail}</div>
+                        <div className="truncate text-[13px] font-medium">{item.sender}</div>
+                        <div className="truncate text-[11.5px] text-muted">{item.senderEmail}</div>
                       </div>
                     </div>
                   </td>
