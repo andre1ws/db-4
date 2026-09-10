@@ -5,9 +5,9 @@ import {
   Search,
   ShieldCheck,
   Smartphone,
-  UserRound,
 } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
+import DefaultAvatar from './DefaultAvatar'
 import FilterPanel from './FilterPanel'
 import UserCard from './UserCard'
 import {
@@ -42,11 +42,7 @@ function UserAvatar({ user }: { user: User }) {
     return <img src={user.avatar} alt="" className="h-9 w-9 rounded-full object-cover" />
   }
 
-  return (
-    <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand text-white">
-      <UserRound size={16} strokeWidth={2.2} />
-    </div>
-  )
+  return <DefaultAvatar className="h-9 w-9 shrink-0" />
 }
 
 function UserRow({ user, onOpen }: { user: User; onOpen: (user: User) => void }) {

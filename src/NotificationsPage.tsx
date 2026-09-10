@@ -1,5 +1,6 @@
-import { Archive, ArrowDown, Check, Search, UserRound, Zap } from 'lucide-react'
+import { Archive, ArrowDown, Check, Search, Zap } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
+import DefaultAvatar from './DefaultAvatar'
 import FilterPanel from './FilterPanel'
 import type { FilterPreset, FilterRule } from './filters'
 import NotificationModal from './NotificationModal'
@@ -35,11 +36,7 @@ function SenderAvatar({ item }: { item: Notification }) {
     return <img src={item.avatar} alt="" className="h-9 w-9 shrink-0 rounded-full object-cover" />
   }
 
-  return (
-    <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand text-white">
-      <UserRound size={16} strokeWidth={2.2} />
-    </div>
-  )
+  return <DefaultAvatar className="h-9 w-9 shrink-0" />
 }
 
 export default function NotificationsPage({

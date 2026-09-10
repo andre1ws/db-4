@@ -8,9 +8,9 @@ import {
   Loader2,
   Rocket,
   Search,
-  UserRound,
 } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
+import DefaultAvatar from './DefaultAvatar'
 import FilterPanel from './FilterPanel'
 import type { FilterPreset, FilterRule } from './filters'
 import {
@@ -56,11 +56,7 @@ function TransactionAvatar({ transaction }: { transaction: Transaction }) {
     return <img src={transaction.avatar} alt="" className="h-8 w-8 rounded-full object-cover" />
   }
 
-  return (
-    <div className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand text-white">
-      <UserRound size={16} strokeWidth={2.2} />
-    </div>
-  )
+  return <DefaultAvatar className="h-8 w-8 shrink-0" />
 }
 
 function currency(amount: number) {
