@@ -39,10 +39,10 @@ function KycBadge({ status }: { status: KycStatus }) {
 
 function UserAvatar({ user }: { user: User }) {
   if (user.avatar) {
-    return <img src={user.avatar} alt="" className="h-9 w-9 rounded-full object-cover" />
+    return <img src={user.avatar} alt="" className="h-7 w-7 rounded-full object-cover" />
   }
 
-  return <DefaultAvatar className="h-9 w-9 shrink-0" />
+  return <DefaultAvatar className="h-7 w-7 shrink-0" />
 }
 
 function UserRow({ user, onOpen }: { user: User; onOpen: (user: User) => void }) {

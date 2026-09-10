@@ -36,10 +36,10 @@ function StatusBadge({ status }: { status: PartnerStatus }) {
 
 function PartnerAvatar({ partner }: { partner: Partner }) {
   if (partner.avatar) {
-    return <img src={partner.avatar} alt="" className="h-9 w-9 shrink-0 rounded-full object-cover" />
+    return <img src={partner.avatar} alt="" className="h-7 w-7 shrink-0 rounded-full object-cover" />
   }
 
-  return <DefaultAvatar className="h-9 w-9 shrink-0" />
+  return <DefaultAvatar className="h-7 w-7 shrink-0" />
 }
 
 function currency(amount: number) {

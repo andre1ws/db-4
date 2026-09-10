@@ -26,17 +26,17 @@ function SegmentPill({ children }: { children: string }) {
 function SenderAvatar({ item }: { item: Notification }) {
   if (item.isSystem) {
     return (
-      <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand text-white">
-        <Zap size={16} fill="currentColor" />
+      <div className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand text-white">
+        <Zap size={14} fill="currentColor" />
       </div>
     )
   }
 
   if (item.avatar) {
-    return <img src={item.avatar} alt="" className="h-9 w-9 shrink-0 rounded-full object-cover" />
+    return <img src={item.avatar} alt="" className="h-7 w-7 shrink-0 rounded-full object-cover" />
   }
 
-  return <DefaultAvatar className="h-9 w-9 shrink-0" />
+  return <DefaultAvatar className="h-7 w-7 shrink-0" />
 }
 
 export default function NotificationsPage({

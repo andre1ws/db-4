@@ -53,10 +53,10 @@ function StatusBadge({ status }: { status: TransactionStatus }) {
 
 function TransactionAvatar({ transaction }: { transaction: Transaction }) {
   if (transaction.avatar) {
-    return <img src={transaction.avatar} alt="" className="h-8 w-8 rounded-full object-cover" />
+    return <img src={transaction.avatar} alt="" className="h-7 w-7 rounded-full object-cover" />
   }
 
-  return <DefaultAvatar className="h-8 w-8 shrink-0" />
+  return <DefaultAvatar className="h-7 w-7 shrink-0" />
 }
 
 function currency(amount: number) {
