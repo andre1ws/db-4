@@ -31,7 +31,7 @@ type NavKey =
   | 'payments-hk'
   | 'payment-methods'
   | 'regions'
-  | 'csp'
+  | 'csp-partners'
   | 'accounts'
   | 'contracts'
   | 'requests'
@@ -59,6 +59,8 @@ const paymentItems: { key: NavKey; label: string; count?: number }[] = [
   { key: 'payment-methods', label: 'Payment methods' },
   { key: 'regions', label: 'Regions' },
 ]
+
+const cspItems: { key: NavKey; label: string; count?: number }[] = [{ key: 'csp-partners', label: 'Partners' }]
 
 function SubNavGroup({
   items,
@@ -103,8 +105,10 @@ export default function Sidebar({
 }) {
   const [adminOpen, setAdminOpen] = useState(true)
   const [paymentsOpen, setPaymentsOpen] = useState(true)
+  const [cspOpen, setCspOpen] = useState(true)
   const isAdmin = adminItems.some((item) => item.key === active)
   const isPayments = paymentItems.some((item) => item.key === active)
+  const isCsp = cspItems.some((item) => item.key === active)
 
   return (
     <aside className="sticky top-0 flex h-svh w-[224px] shrink-0 flex-col py-2.5 pl-2.5 pr-1.5">
@@ -171,13 +175,26 @@ export default function Sidebar({
 
           {paymentsOpen ? <SubNavGroup items={paymentItems} active={active} onNavigate={onNavigate} /> : null}
 
-          <NavItem
-            icon={<Handshake size={16} strokeWidth={1.75} />}
-            label="CSP"
-            active={active === 'csp'}
-            onClick={() => onNavigate('csp')}
-            chevron
-          />
+          <button
+            type="button"
+            onClick={() => setCspOpen((open) => !open)}
+            className={`flex w-full items-center gap-2.5 rounded-xl px-2.5 py-1.5 text-left transition hover:bg-nav-hover ${
+              isCsp ? 'text-nav-text' : 'text-nav-muted'
+            }`}
+          >
+            <span className="grid h-6 w-6 place-items-center">
+              <Handshake size={16} strokeWidth={1.75} />
+            </span>
+            <span className="min-w-0 flex-1 truncate font-medium">CSP</span>
+            {cspOpen ? (
+              <ChevronDown size={15} className="text-nav-muted" />
+            ) : (
+              <ChevronRight size={15} className="text-nav-muted" />
+            )}
+          </button>
+
+          {cspOpen ? <SubNavGroup items={cspItems} active={active} onNavigate={onNavigate} /> : null}
+
           <NavItem
             icon={<Building2 size={16} strokeWidth={1.75} />}
             label="Payment accounts"

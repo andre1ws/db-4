@@ -27,6 +27,7 @@ import {
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { PAGE_SIZE, agents, type Agent, type AgentStatus } from './agents'
 import NotificationsPage from './NotificationsPage'
+import PartnersPage from './PartnersPage'
 import PromotionsPage from './PromotionsPage'
 import type { Notification } from './notifications'
 import type { Promotion } from './promotions'
@@ -48,7 +49,7 @@ const sectionMeta: Record<NavKey, { parent?: string; label: string }> = {
   'payments-hk': { parent: 'Payments', label: 'Transactions HK' },
   'payment-methods': { parent: 'Payments', label: 'Payment methods' },
   regions: { parent: 'Payments', label: 'Regions' },
-  csp: { label: 'CSP' },
+  'csp-partners': { parent: 'CSP', label: 'Partners' },
   accounts: { label: 'Payment accounts' },
   contracts: { label: 'Contracts' },
   requests: { label: 'Requests' },
@@ -550,7 +551,7 @@ function hashToNav(hash: string): NavKey {
     value === 'payments-hk' ||
     value === 'payment-methods' ||
     value === 'regions' ||
-    value === 'csp' ||
+    value === 'csp-partners' ||
     value === 'accounts' ||
     value === 'contracts' ||
     value === 'requests' ||
@@ -603,6 +604,8 @@ export default function App() {
       <TransactionsPage key="HK" region="HK" />
     ) : section === 'notifications' ? (
       <NotificationsPage modal={notifModal} onModalChange={setNotifModal} />
+    ) : section === 'csp-partners' ? (
+      <PartnersPage />
     ) : (
       <PlaceholderPage />
     )
