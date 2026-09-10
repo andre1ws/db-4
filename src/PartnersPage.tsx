@@ -222,7 +222,7 @@ export default function PartnersPage() {
             <tbody>
               {visible.map((item) => (
                 <tr key={item.id} className="border-b border-line last:border-b-0 hover:bg-hover">
-                  <td className="py-1.5 pl-4 pr-3">
+                  <td className="py-1 pl-4 pr-3">
                     <div className="flex items-center gap-2.5">
                       <span className="grid h-6 w-6 shrink-0 place-items-center text-muted">
                         {item.isRoot ? <Link2 size={15} /> : <Repeat size={15} />}
@@ -234,21 +234,21 @@ export default function PartnersPage() {
                       </div>
                     </div>
                   </td>
-                  <td className="px-2 py-1.5">
+                  <td className="px-2 py-1">
                     <StatusBadge status={item.status} />
                   </td>
-                  <td className="px-2 py-1.5 text-right text-[13.5px] font-medium tabular-nums">
+                  <td className="px-2 py-1 text-right text-[13.5px] font-medium tabular-nums">
                     {currency(item.volume)}
                   </td>
-                  <td className="px-2 py-1.5 text-right text-[13px] tabular-nums text-body">
+                  <td className="px-2 py-1 text-right text-[13px] tabular-nums text-body">
                     {currency(item.shareOfNetwork)}
                   </td>
-                  <td className="px-2 py-1.5 text-right text-[13px] tabular-nums text-body">
+                  <td className="px-2 py-1 text-right text-[13px] tabular-nums text-body">
                     {currency(item.shareOfPartner)}
                   </td>
-                  <td className="px-2 py-1.5 text-[13px] tabular-nums text-body">{item.requests}</td>
-                  <td className="px-2 py-1.5 text-[13px] tabular-nums text-body">{item.connected}</td>
-                  <td className="py-1.5 pl-3 pr-4 text-[13px] tabular-nums text-body">
+                  <td className="px-2 py-1 text-[13px] tabular-nums text-body">{item.requests}</td>
+                  <td className="px-2 py-1 text-[13px] tabular-nums text-body">{item.connected}</td>
+                  <td className="py-1 pl-3 pr-4 text-[13px] tabular-nums text-body">
                     {item.communityMembers}
                   </td>
                 </tr>

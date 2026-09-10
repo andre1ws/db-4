@@ -62,7 +62,7 @@ function UserRow({ user, onOpen }: { user: User; onOpen: (user: User) => void })
       tabIndex={0}
       aria-label={`Open profile for ${user.name}`}
     >
-      <td className="py-1.5 pl-4 pr-4">
+      <td className="py-1 pl-4 pr-4">
         <div className="flex min-w-[220px] items-center gap-2.5">
           <UserAvatar user={user} />
           <div className="min-w-0">
@@ -71,7 +71,7 @@ function UserRow({ user, onOpen }: { user: User; onOpen: (user: User) => void })
           </div>
         </div>
       </td>
-      <td className="py-1.5 pl-2 pr-4">
+      <td className="py-1 pl-2 pr-4">
         {user.role ? (
           <span className="inline-flex max-w-full truncate rounded-full bg-chip px-2.5 py-1 text-[12px] font-medium text-body">
             {user.role}
@@ -80,16 +80,16 @@ function UserRow({ user, onOpen }: { user: User; onOpen: (user: User) => void })
           <span className="text-muted">—</span>
         )}
       </td>
-      <td className="py-1.5 pl-2 pr-4">
+      <td className="py-1 pl-2 pr-4">
         <KycBadge status={user.kyc} />
       </td>
-      <td className="py-1.5 pl-2 pr-4">
+      <td className="py-1 pl-2 pr-4">
         <div className="flex items-center gap-2 text-[12.5px] text-body">
           <Device size={15} className="text-muted" />
           {user.lastAction}
         </div>
       </td>
-      <td className="py-1.5 pl-2 pr-4 text-[12.5px] text-body">{user.registered}</td>
+      <td className="py-1 pl-2 pr-4 text-[12.5px] text-body">{user.registered}</td>
     </tr>
   )
 }

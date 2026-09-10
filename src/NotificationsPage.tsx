@@ -169,7 +169,7 @@ export default function NotificationsPage({
                   tabIndex={0}
                   aria-label={`Open notification from ${item.sender}`}
                 >
-                  <td className="py-1.5 pl-4 pr-2">
+                  <td className="py-1 pl-4 pr-2">
                     <div className="flex items-center gap-2.5">
                       <SenderAvatar item={item} />
                       <div className="min-w-0">
@@ -178,21 +178,21 @@ export default function NotificationsPage({
                       </div>
                     </div>
                   </td>
-                  <td className="px-2 py-1.5">
+                  <td className="px-2 py-1">
                     <SegmentPill>{item.segment}</SegmentPill>
                   </td>
-                  <td className="px-2 py-1.5 text-center">
+                  <td className="px-2 py-1 text-center">
                     {item.pushSent ? (
                       <span className="inline-grid h-5 w-5 place-items-center rounded-full border border-line-strong text-muted">
                         <Check size={12} />
                       </span>
                     ) : null}
                   </td>
-                  <td className="px-2 py-1.5">
+                  <td className="px-2 py-1">
                     <div className="truncate text-[13.5px] font-medium">{item.title}</div>
                     <div className="mt-0.5 truncate text-[12px] text-muted">{item.preview}</div>
                   </td>
-                  <td className="py-1.5 pl-3 pr-4 text-[13px] text-body">{item.sentDate}</td>
+                  <td className="py-1 pl-3 pr-4 text-[13px] text-body">{item.sentDate}</td>
                 </tr>
               ))}
               {filtered.length === 0 ? (
