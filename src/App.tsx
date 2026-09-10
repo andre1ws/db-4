@@ -211,7 +211,7 @@ function AgentRow({ agent }: { agent: Agent }) {
 
   return (
     <tr className="border-b border-line last:border-b-0">
-      <td className="py-1.5 pl-3 pr-4">
+      <td className="py-1.5 pl-4 pr-4">
         <div className="flex items-center gap-2.5">
           <AgentIcon icon={agent.icon} />
           <div className="min-w-0">
@@ -258,7 +258,7 @@ function AgentRow({ agent }: { agent: Agent }) {
       <td className="py-1.5 pl-2 pr-4">
         <StatusBadge status={agent.status} />
       </td>
-      <td className="py-1.5 pl-2 pr-3">
+      <td className="py-1.5 pl-2 pr-4">
         <div className="flex items-center justify-end gap-1.5">
           <button
             type="button"
@@ -327,8 +327,8 @@ function AgentsPage() {
 
   return (
     <main className="flex h-full min-h-0 flex-col pl-2 pr-4 py-3">
-        <section className="flex min-h-0 flex-1 flex-col rounded-2xl bg-white p-4 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
-          <div className="mb-3 flex shrink-0 flex-wrap items-center gap-2">
+        <section className="flex min-h-0 flex-1 flex-col rounded-2xl bg-white py-4 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
+          <div className="mb-3 flex shrink-0 flex-wrap items-center gap-2 px-4">
             <label className="relative w-full min-w-[220px] sm:w-[38%]">
               <Search
                 size={16}
@@ -395,13 +395,13 @@ function AgentsPage() {
               </colgroup>
               <thead>
                 <tr className="bg-chip text-[12.5px] font-medium text-body">
-                  <th className="sticky top-0 z-10 rounded-l-xl bg-chip px-3 py-1.5">Name :</th>
+                  <th className="sticky top-0 z-10 bg-chip py-1.5 pl-4 pr-3">Name :</th>
                   <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">Last Update :</th>
                   <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">Type :</th>
                   <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">Runs :</th>
                   <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">Rating :</th>
                   <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">Status :</th>
-                  <th className="sticky top-0 z-10 rounded-r-xl bg-chip px-3 py-1.5 text-right">Actions :</th>
+                  <th className="sticky top-0 z-10 bg-chip py-1.5 pl-3 pr-4 text-right">Actions :</th>
                 </tr>
               </thead>
               <tbody>
@@ -419,7 +419,7 @@ function AgentsPage() {
             </table>
           </div>
 
-          <div className="mt-3 flex shrink-0 flex-wrap items-center justify-between gap-3">
+          <div className="mt-3 flex shrink-0 flex-wrap items-center justify-between gap-3 px-4">
             <p className="text-[13px] text-muted">
               Showing {from} to {to} of {filtered.length} agents.
             </p>

@@ -66,7 +66,7 @@ function UserRow({ user, onOpen }: { user: User; onOpen: (user: User) => void })
       tabIndex={0}
       aria-label={`Open profile for ${user.name}`}
     >
-      <td className="py-1.5 pl-3 pr-4">
+      <td className="py-1.5 pl-4 pr-4">
         <div className="flex min-w-[220px] items-center gap-2.5">
           <UserAvatar user={user} />
           <div className="min-w-0">
@@ -93,7 +93,7 @@ function UserRow({ user, onOpen }: { user: User; onOpen: (user: User) => void })
           {user.lastAction}
         </div>
       </td>
-      <td className="py-1.5 pl-2 pr-3 text-[12.5px] text-body">{user.registered}</td>
+      <td className="py-1.5 pl-2 pr-4 text-[12.5px] text-body">{user.registered}</td>
     </tr>
   )
 }
@@ -173,8 +173,8 @@ export default function UsersPage() {
 
   return (
     <main className="flex h-full min-h-0 flex-col pl-2 pr-4 py-3">
-      <section className="flex min-h-0 flex-1 flex-col rounded-2xl bg-white p-4 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
-        <div className="relative mb-2.5 flex shrink-0 flex-wrap items-center gap-2">
+      <section className="flex min-h-0 flex-1 flex-col rounded-2xl bg-white py-4 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
+        <div className="relative mb-2.5 flex shrink-0 flex-wrap items-center gap-2 px-4">
           <label className="relative w-full min-w-[220px] sm:w-[32%]">
             <Search
               size={16}
@@ -223,7 +223,7 @@ export default function UsersPage() {
             </colgroup>
             <thead>
               <tr className="bg-chip text-[12.5px] font-medium text-body">
-                <th className="sticky top-0 z-10 rounded-l-xl bg-chip px-3 py-1.5">
+                <th className="sticky top-0 z-10 bg-chip py-1.5 pl-4 pr-3">
                   <div className="flex items-center gap-2">
                     User
                     <span className="rounded-full bg-white/70 px-2 py-0.5 text-[10.5px] text-muted">
@@ -234,7 +234,7 @@ export default function UsersPage() {
                 <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">Role</th>
                 <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">KYC status</th>
                 <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">Last action</th>
-                <th className="sticky top-0 z-10 rounded-r-xl bg-chip px-3 py-1.5">Registration date</th>
+                <th className="sticky top-0 z-10 bg-chip py-1.5 pl-3 pr-4">Registration date</th>
               </tr>
             </thead>
             <tbody>
@@ -251,7 +251,7 @@ export default function UsersPage() {
             </tbody>
           </table>
 
-          <div className="flex flex-col items-center gap-2 py-3">
+          <div className="flex flex-col items-center gap-2 px-4 py-3">
             <p className="text-[13px] text-muted">
               Showing {visible.length} of {filtered.length} users.
             </p>

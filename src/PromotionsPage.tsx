@@ -78,8 +78,8 @@ export default function PromotionsPage({
 
   return (
     <main className="flex h-full min-h-0 flex-col pl-2 pr-4 py-3">
-      <section className="flex min-h-0 flex-1 flex-col rounded-2xl bg-white p-4 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
-        <div className="relative mb-2.5 flex shrink-0 flex-wrap items-center gap-2">
+      <section className="flex min-h-0 flex-1 flex-col rounded-2xl bg-white py-4 shadow-[0_12px_40px_rgba(17,17,17,0.05)]">
+        <div className="relative mb-2.5 flex shrink-0 flex-wrap items-center gap-2 px-4">
           <label className="relative w-full min-w-[220px] sm:w-[35%]">
             <Search
               size={16}
@@ -121,7 +121,7 @@ export default function PromotionsPage({
             </colgroup>
             <thead>
               <tr className="bg-chip text-[12.5px] font-medium text-body">
-                <th className="sticky top-0 z-10 rounded-l-xl bg-chip px-3 py-1.5">
+                <th className="sticky top-0 z-10 bg-chip py-1.5 pl-4 pr-3">
                   <div className="flex items-center gap-2">
                     Banner name
                     <span className="rounded-full bg-white/70 px-2 py-0.5 text-[10.5px] text-muted">
@@ -133,7 +133,7 @@ export default function PromotionsPage({
                 <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">Countries</th>
                 <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">Button leads to</th>
                 <th className="sticky top-0 z-10 bg-chip px-2 py-1.5">End date</th>
-                <th className="sticky top-0 z-10 rounded-r-xl bg-chip px-3 py-1.5">Date of last update</th>
+                <th className="sticky top-0 z-10 bg-chip py-1.5 pl-3 pr-4">Date of last update</th>
               </tr>
             </thead>
             <tbody>
@@ -152,7 +152,7 @@ export default function PromotionsPage({
                   tabIndex={0}
                   aria-label={`Open promotion ${item.name}`}
                 >
-                  <td className="truncate px-3 py-1.5 text-[13.5px] font-medium">{item.name}</td>
+                  <td className="truncate py-1.5 pl-4 pr-3 text-[13.5px] font-medium">{item.name}</td>
                   <td className="px-2 py-1.5">
                     <Pill>{item.segment}</Pill>
                   </td>
@@ -161,7 +161,7 @@ export default function PromotionsPage({
                   </td>
                   <td className="px-2 py-1.5 text-[13px] text-body">{item.leadsTo}</td>
                   <td className="px-2 py-1.5 text-[13px] text-muted">{item.endDate || '—'}</td>
-                  <td className="px-3 py-1.5 text-[13px] text-body">{item.updated}</td>
+                  <td className="py-1.5 pl-3 pr-4 text-[13px] text-body">{item.updated}</td>
                 </tr>
               ))}
               {filtered.length === 0 ? (
