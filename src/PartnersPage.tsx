@@ -27,7 +27,7 @@ const statusStyles: Record<PartnerStatus, string> = {
 function StatusBadge({ status }: { status: PartnerStatus }) {
   return (
     <span
-      className={`inline-flex rounded-full px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wide ${statusStyles[status]}`}
+      className={`inline-flex rounded-full px-2.5 py-1 text-[10.5px] font-semibold uppercase ${statusStyles[status]}`}
     >
       {status}
     </span>
@@ -222,7 +222,7 @@ export default function PartnersPage() {
             <tbody>
               {visible.map((item) => (
                 <tr key={item.id} className="group border-b border-line last:border-b-0 hover:bg-hover">
-                  <td className="py-1 pl-4 pr-3">
+                  <td className="py-1.5 pl-4 pr-3">
                     <div className="flex items-center gap-2.5">
                       <PartnerAvatar partner={item} />
                       <div className="min-w-0">
@@ -237,21 +237,21 @@ export default function PartnersPage() {
                       ) : null}
                     </div>
                   </td>
-                  <td className="px-2 py-1">
+                  <td className="px-2 py-1.5">
                     <StatusBadge status={item.status} />
                   </td>
-                  <td className="px-2 py-1 text-right text-[13.5px] font-medium tabular-nums">
+                  <td className="px-2 py-1.5 text-right text-[13.5px] font-medium tabular-nums">
                     {currency(item.volume)}
                   </td>
-                  <td className="px-2 py-1 text-right text-[13px] tabular-nums text-body">
+                  <td className="px-2 py-1.5 text-right text-[13px] tabular-nums text-body">
                     {currency(item.shareOfNetwork)}
                   </td>
-                  <td className="px-2 py-1 text-right text-[13px] tabular-nums text-body">
+                  <td className="px-2 py-1.5 text-right text-[13px] tabular-nums text-body">
                     {currency(item.shareOfPartner)}
                   </td>
-                  <td className="px-2 py-1 text-[13px] tabular-nums text-body">{item.requests}</td>
-                  <td className="px-2 py-1 text-[13px] tabular-nums text-body">{item.connected}</td>
-                  <td className="py-1 pl-3 pr-4 text-[13px] tabular-nums text-body">
+                  <td className="px-2 py-1.5 text-[13px] tabular-nums text-body">{item.requests}</td>
+                  <td className="px-2 py-1.5 text-[13px] tabular-nums text-body">{item.connected}</td>
+                  <td className="py-1.5 pl-3 pr-4 text-[13px] tabular-nums text-body">
                     {item.communityMembers}
                   </td>
                 </tr>

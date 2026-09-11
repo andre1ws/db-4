@@ -44,7 +44,7 @@ const methodStyles: Record<MethodTone, string> = {
 function StatusBadge({ status }: { status: TransactionStatus }) {
   return (
     <span
-      className={`inline-flex rounded-full px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wide ${statusStyles[status]}`}
+      className={`inline-flex rounded-full px-2.5 py-1 text-[10.5px] font-semibold uppercase ${statusStyles[status]}`}
     >
       {status}
     </span>
@@ -260,7 +260,7 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
             <tbody>
               {visible.map((item) => (
                 <tr key={item.id} className="border-b border-line last:border-b-0 hover:bg-hover">
-                  <td className="py-1 pl-4 pr-4">
+                  <td className="py-1.5 pl-4 pr-4">
                     <div className="flex items-center gap-2.5">
                       <TransactionAvatar transaction={item} />
                       <div className="flex min-w-0 items-center gap-1.5">
@@ -271,16 +271,16 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
                       </div>
                     </div>
                   </td>
-                  <td className="py-1 pl-2 pr-4">
+                  <td className="py-1.5 pl-2 pr-4">
                     <StatusBadge status={item.status} />
                   </td>
-                  <td className="py-1 pl-2 pr-4 text-[13px] text-body">{item.expresses ? 'Yes' : 'No'}</td>
-                  <td className="py-1 pl-2 pr-4 text-[13px] text-body">{item.createdDate}</td>
-                  <td className="py-1 pl-2 pr-4 text-[13px] text-body">{item.updatedDate}</td>
-                  <td className={`truncate py-1 pl-2 pr-4 text-[13px] ${methodStyles[item.methodTone]}`}>
+                  <td className="py-1.5 pl-2 pr-4 text-[13px] text-body">{item.expresses ? 'Yes' : 'No'}</td>
+                  <td className="py-1.5 pl-2 pr-4 text-[13px] text-body">{item.createdDate}</td>
+                  <td className="py-1.5 pl-2 pr-4 text-[13px] text-body">{item.updatedDate}</td>
+                  <td className={`truncate py-1.5 pl-2 pr-4 text-[13px] ${methodStyles[item.methodTone]}`}>
                     {item.method}
                   </td>
-                  <td className="py-1 pl-2 pr-4 text-right text-[13.5px] font-medium tabular-nums">
+                  <td className="py-1.5 pl-2 pr-4 text-right text-[13.5px] font-medium tabular-nums">
                     {currency(item.amount)}
                   </td>
                 </tr>

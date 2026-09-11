@@ -32,7 +32,7 @@ function KycBadge({ status }: { status: User['kyc'] }) {
   }
 
   return (
-    <span className={`inline-flex rounded-full px-3 py-1 text-[11px] font-medium uppercase ${styles[status]}`}>
+    <span className={`inline-flex rounded-full px-2.5 py-1 text-[10.5px] font-semibold uppercase ${styles[status]}`}>
       {status}
     </span>
   )
