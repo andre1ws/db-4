@@ -5,6 +5,7 @@ import {
   AlignRight,
   Bold,
   Calendar,
+  ChevronDown,
   CircleHelp,
   FilePlus,
   ImageIcon,
@@ -65,18 +66,24 @@ function SelectField({
   options: string[]
 }) {
   return (
-    <select
-      value={value}
-      onChange={(event) => onChange(event.target.value)}
-      className="h-9 w-full rounded-xl border border-line bg-white px-3.5 text-[13.5px] outline-none focus:border-line-focus"
-    >
-      <option value="">{placeholder}</option>
-      {options.map((option) => (
-        <option key={option} value={option}>
-          {option}
-        </option>
-      ))}
-    </select>
+    <div className="relative">
+      <select
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className="h-9 w-full appearance-none rounded-xl border border-line bg-white px-3.5 pr-9 text-[13.5px] outline-none focus:border-line-focus"
+      >
+        <option value="">{placeholder}</option>
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+      <ChevronDown
+        size={14}
+        className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-muted"
+      />
+    </div>
   )
 }
 

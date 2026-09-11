@@ -396,7 +396,7 @@ function AgentsPage() {
                   setStatus(e.target.value as 'All' | AgentStatus)
                   setPage(1)
                 }}
-                className="h-9 appearance-none rounded-full border border-line bg-white pl-3.5 pr-9 text-[13px] font-medium outline-none"
+                className="h-9 appearance-none rounded-xl border border-line bg-white pl-3.5 pr-9 text-[13.5px] outline-none focus:border-line-focus"
               >
                 <option value="All">All Status</option>
                 <option value="Public">Public</option>

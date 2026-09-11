@@ -28,7 +28,7 @@ function SelectField({
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="h-9 w-full appearance-none rounded-xl border border-line bg-white pl-3 pr-9 text-[13px] outline-none focus:border-line-focus"
+        className="h-9 w-full appearance-none rounded-xl border border-line bg-white px-3.5 pr-9 text-[13.5px] outline-none focus:border-line-focus"
       >
         {children}
       </select>
@@ -408,7 +408,7 @@ export default function FilterPanel<F extends string>({
                 onChange={(event) => setPresetName(event.target.value)}
                 placeholder={draft.length === 0 ? 'Add a filter to save as preset' : 'Preset name'}
                 disabled={draft.length === 0}
-                className="h-9 w-48 rounded-xl border border-line bg-white px-3 text-[13px] outline-none placeholder:text-placeholder focus:border-line-focus disabled:bg-chip"
+                className="h-9 w-48 rounded-xl border border-line bg-white px-3.5 text-[13.5px] outline-none placeholder:text-placeholder focus:border-line-focus disabled:bg-chip"
               />
               <button
                 type="button"
