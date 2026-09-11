@@ -287,7 +287,7 @@ export default function FilterPanel<F extends string>({
             </button>
           </div>
 
-          <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-[1fr_1fr_1fr_auto] sm:items-end">
             <div>
               <FieldLabel>Field</FieldLabel>
               <SelectField
@@ -338,27 +338,15 @@ export default function FilterPanel<F extends string>({
                 </div>
               )}
             </div>
-          </div>
-
-          <div className="mt-2.5 flex items-center justify-between gap-3">
             <button
               type="button"
               onClick={addRule}
               disabled={condition !== 'empty' && !value}
-              className="inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-3 py-1 text-[12.5px] font-medium text-brand disabled:opacity-40"
+              className="inline-flex h-9 items-center gap-1.5 whitespace-nowrap rounded-full bg-brand-soft px-3.5 text-[12.5px] font-medium text-brand disabled:opacity-40"
             >
               <Plus size={14} />
               Add filter
             </button>
-            {draft.length ? (
-              <button
-                type="button"
-                onClick={handleClear}
-                className="text-[12px] font-medium text-muted hover:text-ink"
-              >
-                Clear all
-              </button>
-            ) : null}
           </div>
 
           {draft.length ? (
@@ -380,6 +368,13 @@ export default function FilterPanel<F extends string>({
                   </button>
                 </span>
               ))}
+              <button
+                type="button"
+                onClick={handleClear}
+                className="ml-auto shrink-0 text-[12px] font-medium text-muted hover:text-ink"
+              >
+                Clear all
+              </button>
             </div>
           ) : null}
 
