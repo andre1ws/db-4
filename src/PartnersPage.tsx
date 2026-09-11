@@ -1,4 +1,4 @@
-import { Archive, ArrowDown, ArrowUpDown, Calendar, Link2, Loader2, Repeat, Search } from 'lucide-react'
+import { Archive, ArrowDown, ArrowLeftRight, ArrowUpDown, Calendar, Link2, Loader2, Repeat, Search } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import DefaultAvatar from './DefaultAvatar'
 import FilterPanel from './FilterPanel'
@@ -221,17 +221,20 @@ export default function PartnersPage() {
             </thead>
             <tbody>
               {visible.map((item) => (
-                <tr key={item.id} className="border-b border-line last:border-b-0 hover:bg-hover">
+                <tr key={item.id} className="group border-b border-line last:border-b-0 hover:bg-hover">
                   <td className="py-1 pl-4 pr-3">
                     <div className="flex items-center gap-2.5">
-                      <span className="grid h-6 w-6 shrink-0 place-items-center text-muted">
-                        {item.isRoot ? <Link2 size={15} /> : <Repeat size={15} />}
-                      </span>
                       <PartnerAvatar partner={item} />
                       <div className="min-w-0">
                         <div className="truncate text-[13.5px] font-medium">{item.name}</div>
                         <div className="truncate text-[11.5px] text-muted">{item.email}</div>
                       </div>
+                      {!item.isRoot ? (
+                        <div className="ml-auto flex shrink-0 items-center gap-1.5 text-muted">
+                          <Link2 size={15} className="hidden group-hover:inline-block" />
+                          <ArrowLeftRight size={15} />
+                        </div>
+                      ) : null}
                     </div>
                   </td>
                   <td className="px-2 py-1">
