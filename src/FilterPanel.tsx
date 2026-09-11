@@ -11,7 +11,7 @@ const conditionLabel: Record<FilterCondition, string> = {
 }
 
 function FieldLabel({ children }: { children: string }) {
-  return <div className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-muted">{children}</div>
+  return <div className="mb-1 text-[10.5px] font-medium uppercase tracking-wide text-muted">{children}</div>
 }
 
 function SelectField({
@@ -273,21 +273,21 @@ export default function FilterPanel<F extends string>({
       {open ? (
         <div
           ref={panelRef}
-          className="mt-1 w-full rounded-2xl border border-line bg-white p-4 shadow-[0_12px_40px_rgba(17,17,17,0.05)]"
+          className="mt-1 w-full rounded-2xl border border-line bg-white p-3.5 shadow-[0_12px_40px_rgba(17,17,17,0.05)]"
         >
-          <div className="mb-3 flex items-center justify-between">
-            <h3 className="text-[14px] font-semibold">Filters</h3>
+          <div className="mb-2.5 flex items-center justify-between">
+            <h3 className="text-[13.5px] font-semibold">Filters</h3>
             <button
               type="button"
               onClick={() => setOpen(false)}
               aria-label="Close filters"
-              className="grid h-7 w-7 place-items-center rounded-full text-muted hover:bg-hover-strong hover:text-ink"
+              className="grid h-6 w-6 place-items-center rounded-full text-muted hover:bg-hover-strong hover:text-ink"
             >
-              <X size={16} />
+              <X size={15} />
             </button>
           </div>
 
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-3">
             <div>
               <FieldLabel>Field</FieldLabel>
               <SelectField
@@ -340,55 +340,50 @@ export default function FilterPanel<F extends string>({
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={addRule}
-            disabled={condition !== 'empty' && !value}
-            className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-3 py-1.5 text-[12.5px] font-medium text-brand disabled:opacity-40"
-          >
-            <Plus size={14} />
-            Add filter
-          </button>
-
-          <div className="mt-4 border-t border-line pt-3">
-            <div className="mb-1.5 flex items-center justify-between">
-              <span className="text-[12px] font-medium text-muted">Added filters</span>
-              {draft.length ? (
-                <button
-                  type="button"
-                  onClick={handleClear}
-                  className="text-[12px] font-medium text-muted hover:text-ink"
-                >
-                  Clear
-                </button>
-              ) : null}
-            </div>
-            <div className="flex min-h-9 flex-wrap items-center gap-1.5 rounded-xl border border-line bg-chip px-2.5 py-2">
-              {draft.length === 0 ? (
-                <span className="text-[12.5px] text-muted">No filters added yet</span>
-              ) : (
-                draft.map((rule) => (
-                  <span
-                    key={rule.id}
-                    className="inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-[12px] font-medium text-body shadow-sm"
-                  >
-                    <span className="text-muted">{conditionLabel[rule.condition]}</span>
-                    <span className="font-medium text-ink">{ruleLabel(rule)}</span>
-                    <button
-                      type="button"
-                      onClick={() => removeRule(rule.id)}
-                      className="text-muted hover:text-ink"
-                      aria-label="Remove filter"
-                    >
-                      <X size={12} />
-                    </button>
-                  </span>
-                ))
-              )}
-            </div>
+          <div className="mt-2.5 flex items-center justify-between gap-3">
+            <button
+              type="button"
+              onClick={addRule}
+              disabled={condition !== 'empty' && !value}
+              className="inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-3 py-1 text-[12.5px] font-medium text-brand disabled:opacity-40"
+            >
+              <Plus size={14} />
+              Add filter
+            </button>
+            {draft.length ? (
+              <button
+                type="button"
+                onClick={handleClear}
+                className="text-[12px] font-medium text-muted hover:text-ink"
+              >
+                Clear all
+              </button>
+            ) : null}
           </div>
 
-          <div className="mt-4 flex flex-wrap items-center gap-3 border-t border-line pt-4">
+          {draft.length ? (
+            <div className="mt-2.5 flex flex-wrap items-center gap-1.5 rounded-xl border border-line bg-chip px-2.5 py-2">
+              {draft.map((rule) => (
+                <span
+                  key={rule.id}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-[12px] font-medium text-body shadow-sm"
+                >
+                  <span className="text-muted">{conditionLabel[rule.condition]}</span>
+                  <span className="font-medium text-ink">{ruleLabel(rule)}</span>
+                  <button
+                    type="button"
+                    onClick={() => removeRule(rule.id)}
+                    className="text-muted hover:text-ink"
+                    aria-label="Remove filter"
+                  >
+                    <X size={12} />
+                  </button>
+                </span>
+              ))}
+            </div>
+          ) : null}
+
+          <div className="mt-3 flex flex-wrap items-center gap-3 border-t border-line pt-3">
             <button
               type="button"
               onClick={handleConfirm}
@@ -408,12 +403,12 @@ export default function FilterPanel<F extends string>({
             ) : null}
 
             <div className="ml-auto flex items-center gap-2">
-              <span className="hidden text-[12px] font-medium text-muted sm:inline">Save as preset</span>
               <input
                 value={presetName}
                 onChange={(event) => setPresetName(event.target.value)}
-                placeholder="Preset name"
-                className="h-9 w-40 rounded-xl border border-line bg-white px-3 text-[13px] outline-none placeholder:text-placeholder focus:border-line-focus"
+                placeholder={draft.length === 0 ? 'Add a filter to save as preset' : 'Preset name'}
+                disabled={draft.length === 0}
+                className="h-9 w-48 rounded-xl border border-line bg-white px-3 text-[13px] outline-none placeholder:text-placeholder focus:border-line-focus disabled:bg-chip"
               />
               <button
                 type="button"
@@ -425,11 +420,6 @@ export default function FilterPanel<F extends string>({
               </button>
             </div>
           </div>
-          {draft.length === 0 ? (
-            <p className="mt-1.5 text-right text-[11.5px] text-muted">
-              Add at least one filter above before saving a preset.
-            </p>
-          ) : null}
         </div>
       ) : null}
     </>
