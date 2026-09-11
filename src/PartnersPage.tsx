@@ -27,7 +27,7 @@ const statusStyles: Record<PartnerStatus, string> = {
 function StatusBadge({ status }: { status: PartnerStatus }) {
   return (
     <span
-      className={`inline-flex rounded-full px-2.5 py-1 text-[10.5px] font-semibold uppercase ${statusStyles[status]}`}
+      className={`inline-flex whitespace-nowrap rounded-full px-2.5 py-1 text-[10.5px] font-semibold uppercase ${statusStyles[status]}`}
     >
       {status}
     </span>

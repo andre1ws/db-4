@@ -35,16 +35,16 @@ const statusStyles: Record<TransactionStatus, string> = {
   Confirmed: 'bg-[#5cb85c] text-white',
 }
 
-const methodStyles: Record<MethodTone, string> = {
-  crypto: 'text-[#1f9a62] font-medium',
-  transfer: 'text-[#3b6fd8] font-medium',
-  plain: 'text-ink',
+const methodDotStyles: Record<MethodTone, string> = {
+  crypto: 'bg-[#1f9a62]',
+  transfer: 'bg-[#3b6fd8]',
+  plain: 'bg-line-strong',
 }
 
 function StatusBadge({ status }: { status: TransactionStatus }) {
   return (
     <span
-      className={`inline-flex rounded-full px-2.5 py-1 text-[10.5px] font-semibold uppercase ${statusStyles[status]}`}
+      className={`inline-flex whitespace-nowrap rounded-full px-2.5 py-1 text-[10.5px] font-semibold uppercase ${statusStyles[status]}`}
     >
       {status}
     </span>
@@ -211,13 +211,13 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
         <div className="min-h-0 flex-1 overflow-auto">
           <table className="w-full min-w-[1080px] table-fixed border-collapse text-left">
             <colgroup>
-              <col className="w-[22%]" />
-              <col className="w-[16%]" />
-              <col className="w-[9%]" />
-              <col className="w-[12%]" />
-              <col className="w-[12%]" />
-              <col className="w-[20%]" />
-              <col className="w-[9%]" />
+              <col className="w-[26%]" />
+              <col className="w-[13%]" />
+              <col className="w-[8%]" />
+              <col className="w-[11%]" />
+              <col className="w-[11%]" />
+              <col className="w-[23%]" />
+              <col className="w-[8%]" />
             </colgroup>
             <thead>
               <tr className="bg-chip text-[12.5px] font-medium text-body">
@@ -277,8 +277,11 @@ export default function TransactionsPage({ region }: { region: TransactionRegion
                   <td className="py-1.5 pl-2 pr-4 text-[13px] text-body">{item.expresses ? 'Yes' : 'No'}</td>
                   <td className="py-1.5 pl-2 pr-4 text-[13px] text-body">{item.createdDate}</td>
                   <td className="py-1.5 pl-2 pr-4 text-[13px] text-body">{item.updatedDate}</td>
-                  <td className={`truncate py-1.5 pl-2 pr-4 text-[13px] ${methodStyles[item.methodTone]}`}>
-                    {item.method}
+                  <td className="py-1.5 pl-2 pr-4 text-[13px] text-body">
+                    <div className="flex min-w-0 items-center gap-1.5">
+                      <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${methodDotStyles[item.methodTone]}`} />
+                      <span className="truncate">{item.method}</span>
+                    </div>
                   </td>
                   <td className="py-1.5 pl-2 pr-4 text-right text-[13.5px] font-medium tabular-nums">
                     {currency(item.amount)}
